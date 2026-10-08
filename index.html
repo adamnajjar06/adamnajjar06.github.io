@@ -1,0 +1,1391 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;padding-top:env(safe-area-inset-top);padding-bottom:env(safe-area-inset-bottom)}body{margin:0;font:14px system-ui,sans-serif;background:#fafafa}img{max-width:100%}[hidden]{display:none!important}</style></head><body><title>Adam Najjar Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Code+Pro:wght@500&display=swap">
+<style>
+/* Layout: sidebar dossier. A profile card holds who, when and how to reach; the main column carries the story, projects and record as clean white cards on a cool grey ground. */
+:root{
+  --bg:#F3F5F8; --card:#FFFFFF; --card-2:#F7F9FB; --ink:#14202E; --ink-2:#475768; --ink-3:#6A7A8C;
+  --line:#DDE3EA; --line-2:#E8EDF2; --accent:#1F497D; --accent-ink:#FFFFFF; --accent-soft:#E6EEF8;
+  --ph:#E6ECF2; --ph-line:#A3B2C2; --hl-bg:#FFEC78; --hl-fg:#3B3200;
+  --band:#14202E; --band-ink:#FFFFFF; --band-ink-2:#B9C6D4; --band-btn:#FFFFFF; --band-btn-ink:#14202E;
+  --rbf:#C8102E; --scrim:rgba(14,22,32,.55);
+  --shadow:0 1px 2px rgba(20,32,46,.05),0 12px 32px -18px rgba(20,32,46,.35);
+  --f-display:"Poppins","Avenir Next","Segoe UI",system-ui,sans-serif;
+  --f-body:"Source Sans 3","Helvetica Neue",Arial,sans-serif;
+  --f-mono:"Source Code Pro",ui-monospace,"SF Mono",Menlo,monospace;
+  --r:16px; --maxw:1360px; --gut:clamp(16px,3vw,32px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0E141B; --card:#151D27; --card-2:#121A23; --ink:#E6ECF2; --ink-2:#A8B5C3; --ink-3:#7F8E9F;
+    --line:#26313E; --line-2:#1F2935; --accent:#8DB3E8; --accent-ink:#0E141B; --accent-soft:#1B2B41;
+    --ph:#1B2531; --ph-line:#3A4A5C; --hl-bg:#5A4F12; --hl-fg:#FFF2A8;
+    --band:#1B2B41; --band-ink:#FFFFFF; --band-ink-2:#B5C4D6; --band-btn:#E6ECF2; --band-btn-ink:#0E141B;
+    --rbf:#E2343F; --scrim:rgba(0,0,0,.65);
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 14px 34px -18px rgba(0,0,0,.85);
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0E141B; --card:#151D27; --card-2:#121A23; --ink:#E6ECF2; --ink-2:#A8B5C3; --ink-3:#7F8E9F;
+  --line:#26313E; --line-2:#1F2935; --accent:#8DB3E8; --accent-ink:#0E141B; --accent-soft:#1B2B41;
+  --ph:#1B2531; --ph-line:#3A4A5C; --hl-bg:#5A4F12; --hl-fg:#FFF2A8;
+  --band:#1B2B41; --band-ink:#FFFFFF; --band-ink-2:#B5C4D6; --band-btn:#E6ECF2; --band-btn-ink:#0E141B;
+  --rbf:#E2343F; --scrim:rgba(0,0,0,.65);
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 14px 34px -18px rgba(0,0,0,.85);
+  color-scheme:dark;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+body.locked{overflow:hidden}
+a{color:var(--accent)}
+a:hover{color:var(--ink)}
+img,video{max-width:100%;display:block}
+h1,h2,h3{text-wrap:balance;font-family:var(--f-display);letter-spacing:-.02em}
+p{text-wrap:pretty}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+.wrap{max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gut)}
+mark.fill{background:var(--hl-bg);color:var(--hl-fg);padding:0 .25em;border-radius:3px}
+.eyebrow{margin:0;font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+.cap{margin:0 0 8px;font-size:12.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3)}
+.meta{margin:0;font-size:14px;font-weight:600;color:var(--ink-3);line-height:1.45}
+
+/* ---------- header ---------- */
+.topbar{position:sticky;top:env(safe-area-inset-top,0px);z-index:40;background:color-mix(in srgb,var(--bg) 88%,transparent);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom:1px solid transparent;transition:border-color .2s}
+.topbar.scrolled{border-bottom-color:var(--line)}
+.topbar .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:6px 24px;min-height:66px;padding-block:8px}
+.brand{font-family:var(--f-display);font-weight:700;font-size:19px;color:var(--ink);text-decoration:none;letter-spacing:-.01em}
+.nav{min-width:0}
+.nav ul{display:flex;gap:2px;list-style:none;margin:0;padding:0;overflow-x:auto;scrollbar-width:none}
+.nav ul::-webkit-scrollbar{display:none}
+.nav a{display:block;padding:8px 12px;border-radius:8px;color:var(--ink-2);text-decoration:none;font-weight:600;font-size:15px;white-space:nowrap}
+.nav a:hover{color:var(--ink);background:var(--card)}
+.nav a.active{color:var(--accent);background:var(--accent-soft)}
+@media (max-width:720px){.nav{flex-basis:100%;margin-inline:-12px}}
+
+/* ---------- layout ---------- */
+.layout{display:flex;flex-wrap:wrap;gap:40px;align-items:flex-start;padding-block:12px 72px}
+.side{flex:1 1 320px;max-width:390px;display:flex;flex-direction:column;gap:22px;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:24px}
+.main{flex:999 1 560px;min-width:0;display:flex;flex-direction:column;gap:72px}
+@media (max-width:980px){.side{max-width:none}#portrait-slot{max-width:280px}}
+
+/* sidebar */
+.side h1{font-weight:700;font-size:36px;line-height:1.08;letter-spacing:-.03em;margin:0}
+.side .sub{margin:8px 0 0;color:var(--ink-2);line-height:1.5}
+.seeking{display:flex;align-items:center;gap:10px;padding:12px 14px;border-radius:10px;background:var(--accent-soft);color:var(--accent);font-weight:700;font-size:15.5px;text-decoration:none}
+.seeking:hover{color:var(--accent)}
+.seeking i{width:9px;height:9px;border-radius:50%;background:var(--accent);flex:none;box-shadow:0 0 0 0 color-mix(in srgb,var(--accent) 50%,transparent);animation:pulse 2.4s ease-out infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--accent) 45%,transparent)}70%{box-shadow:0 0 0 9px transparent}100%{box-shadow:0 0 0 0 transparent}}
+.rows{display:flex;flex-direction:column;font-size:15.5px}
+.rows div{display:flex;justify-content:space-between;gap:12px;padding:8px 0;border-top:1px solid var(--line-2)}
+.rows div:last-child{border-bottom:1px solid var(--line-2)}
+.rows b{font-weight:600}
+.rows span{color:var(--ink-2);text-align:right}
+.contact-list{display:flex;flex-direction:column;gap:8px;font-size:15.5px}
+.contact-list .row{display:flex;align-items:center;justify-content:space-between;gap:10px;min-width:0}
+.contact-list .row span{overflow-wrap:anywhere;min-width:0}
+.mini{font:600 13px/1 var(--f-body);padding:7px 10px;border:1px solid var(--line);background:var(--card-2);color:var(--ink);border-radius:8px;cursor:pointer;white-space:nowrap}
+.mini:hover{border-color:var(--ink)}
+.btn{display:inline-flex;justify-content:center;align-items:center;gap:8px;min-height:48px;padding:0 20px;border-radius:10px;font-weight:600;font-size:16px;text-decoration:none;cursor:pointer;border:1.5px solid transparent;transition:background-color .15s,color .15s,border-color .15s}
+.btn.primary{background:var(--accent);color:var(--accent-ink)}
+.btn.primary:hover{background:var(--ink);color:var(--bg)}
+.btn.ghost{border-color:var(--line);color:var(--ink);background:var(--card)}
+.btn.ghost:hover{border-color:var(--ink)}
+.btn svg{width:16px;height:16px;flex:none}
+.note{margin:0;font-size:13.5px;color:var(--ink-3);min-height:0}
+.note:empty{display:none}
+.chips{display:flex;flex-wrap:wrap;gap:6px;list-style:none;margin:0;padding:0}
+.chips li{font-size:14px;padding:4px 10px;border-radius:999px;background:var(--card-2);border:1px solid var(--line);line-height:1.4}
+
+/* ---------- media frames ---------- */
+.media{position:relative;width:100%;max-width:100%;overflow:hidden;background:var(--ph);border-radius:12px}
+.media img,.media video{width:100%;height:100%;object-fit:cover}
+.r-16-10{aspect-ratio:16/10}.r-16-9{aspect-ratio:16/9}.r-4-5{aspect-ratio:4/5}.r-3-2{aspect-ratio:3/2}.r-fill{height:100%}
+.ph{border:1.5px dashed var(--ph-line)}
+.fit{background:#FFFFFF}
+.ctr{background:#0B1016;isolation:isolate}
+.media.ctr img.bd{position:absolute;top:-20%;left:-20%;width:140%;height:140%;max-width:none;object-fit:cover;filter:blur(24px) brightness(.72) saturate(1.1);z-index:0}
+.media.ctr img.fg{position:relative;z-index:1;width:100%;height:100%;object-fit:contain;object-position:50% 50%}
+.zoom.ctr:hover img.fg{opacity:1}
+.zoom.ctr:hover img.bd{opacity:.85}
+.fit img{object-fit:contain;padding:10px}
+.nat{aspect-ratio:auto;height:auto}
+.nat img{height:auto;max-height:72vh;object-fit:contain}
+.zoom{display:block;border:0;padding:0;cursor:zoom-in;font:inherit;color:inherit;text-align:left}
+.zoom:hover img{opacity:.92}
+.cs-hero .nat{border:1px solid var(--line)}
+.fig{background:var(--card-2);border:1px solid var(--line-2)}
+.fig .art{position:absolute;inset:14px}
+.fig .art svg{width:100%;height:100%;display:block}
+.fig-chip{position:absolute;left:12px;top:11px;z-index:2;font:600 12px/1 var(--f-body);padding:6px 9px;border-radius:999px;background:var(--accent-soft);color:var(--accent);display:inline-flex;align-items:center;gap:6px}
+.fig-chip::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--accent)}
+.card-media .fig{border:0}
+.a-ln.lk-w{stroke-width:2.4}
+.a-acc.lk-w{stroke-width:3.2}
+.sim-ctl{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;margin-top:12px;padding:12px 14px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.sim-ctl label{font-weight:600;font-size:15px}
+.sim-ctl input[type=range]{flex:1 1 200px;min-width:0;accent-color:var(--accent)}
+.sim-ctl output{font:500 14px/1 var(--f-mono);min-width:4ch;text-align:right}
+.sim-note{font-size:14px;color:var(--ink-3)}
+.lightbox{position:fixed;inset:0;z-index:130;background:rgba(8,12,18,.88);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:calc(env(safe-area-inset-top,0px) + 16px) 16px calc(env(safe-area-inset-bottom,0px) + 16px)}
+.lightbox[hidden]{display:none}
+.lightbox figure{margin:0;display:flex;flex-direction:column;align-items:center;gap:10px;max-width:100%;min-height:0}
+.lightbox img{max-width:min(1400px,100%);max-height:calc(100vh - 140px);object-fit:contain;background:#FFFFFF;border-radius:8px}
+.lightbox figcaption{color:#E6ECF2;font-size:15px;text-align:center}
+.lightbox .lb-close{align-self:flex-end;background:#FFFFFF;color:#14202E;border-color:#FFFFFF}
+.lightbox.doc{justify-content:flex-start;overflow-y:auto;overscroll-behavior:contain}
+.lightbox.doc .lb-close{position:sticky;top:0;z-index:2;flex:none}
+.lightbox.doc figure{width:min(900px,100%);flex:none}
+.lightbox.doc img{width:100%;max-width:none;max-height:none;height:auto}
+.lb-nav{display:flex;align-items:center;gap:14px}
+.lb-nav[hidden]{display:none}
+.lightbox:has(.lb-nav:not([hidden])) img{max-height:calc(100vh - 200px)}
+.lightbox .lb-btn{background:#FFFFFF;color:#14202E;border-color:#FFFFFF;min-width:48px;justify-content:center}
+.lb-count{color:#E6ECF2;font-size:14px;font-variant-numeric:tabular-nums;min-width:48px;text-align:center}
+.set-tag{position:absolute;right:10px;bottom:10px;z-index:2;display:inline-flex;align-items:center;gap:6px;padding:4px 9px;border-radius:999px;background:rgba(10,16,24,.74);color:#FFFFFF;font:600 12.5px/1.3 var(--f-body);pointer-events:none}
+.set-tag svg{width:14px;height:14px}
+.ph:has(.art){border:0;background:var(--card-2)}
+.ph .art{position:absolute;inset:12px 12px 40px;}
+.ph .art svg{width:100%;height:100%;display:block}
+.ph-empty{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:20px;text-align:center}
+.ph-empty svg{width:32px;height:32px;color:var(--ink-3)}
+.ph-label{font-size:15px;color:var(--ink-2);max-width:26ch;line-height:1.4}
+.ph-tag{position:absolute;left:12px;bottom:11px;z-index:2;font:600 12.5px/1.35 var(--f-body);background:var(--hl-bg);color:var(--hl-fg);padding:4px 8px;border-radius:6px;max-width:calc(100% - 24px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+/* schematic art */
+.a-ln{stroke:var(--ink);stroke-width:1.5;fill:none;stroke-linejoin:round;stroke-linecap:round}
+.a-fill{fill:var(--accent-soft);stroke:var(--ink);stroke-width:1.5;stroke-linejoin:round}
+.a-bg{fill:var(--card-2)}
+.a-paper{fill:var(--card-2);stroke:var(--ink);stroke-width:1.5}
+.a-dim{stroke:var(--ink-3);stroke-width:1;fill:none;stroke-dasharray:3 3}
+.a-thin{stroke:var(--ink-3);stroke-width:1;fill:none}
+.a-ctr{stroke:var(--ink-3);stroke-width:1;fill:none;stroke-dasharray:16 4 2 4}
+.a-acc{stroke:var(--accent);stroke-width:2;fill:none;stroke-linecap:round}
+.a-accf{fill:var(--accent)}
+.a-ink{fill:var(--ink)}
+.a-rbf{stroke:var(--rbf);stroke-width:1.8;fill:var(--card-2)}
+.a-rbff{fill:var(--rbf)}
+.a-txt{font-family:var(--f-mono);font-size:10px;letter-spacing:.06em;fill:var(--ink-2)}
+.a-txt-acc{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.04em;fill:var(--accent);font-weight:500}
+.a-big{font-family:var(--f-display);font-weight:700;fill:none;stroke:var(--ink-3);stroke-width:1.2}
+.a-faint{opacity:.3}
+.a-trace{stroke:var(--accent);stroke-width:1.5;fill:none;stroke-dasharray:4 3}
+.a-joint{fill:var(--card-2);stroke:var(--ink);stroke-width:1.5}
+
+/* ---------- section heads ---------- */
+.sec{display:flex;flex-direction:column;gap:20px}
+.sec-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:8px 24px}
+.sec-head h2{font-weight:600;font-size:34px;line-height:1.1;margin:0}
+.sec-head p{margin:0;color:var(--ink-3);font-size:15.5px}
+
+/* about */
+.about h2{font-weight:600;font-size:clamp(34px,4vw,48px);line-height:1.06;letter-spacing:-.03em;margin:0;max-width:17ch}
+.about .lead{margin:0;font-size:19.5px;line-height:1.6;max-width:62ch}
+.about p{margin:0;color:var(--ink-2);max-width:64ch}
+.about .sig{font-family:var(--f-display);font-weight:600;color:var(--ink);font-size:18px}
+.two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:6px}
+@media (max-width:640px){.two{grid-template-columns:minmax(0,1fr)}}
+.box{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:20px 22px}
+.box h3{margin:0 0 4px;font-size:17px;font-weight:600;display:flex;align-items:center;gap:8px}
+.box h3 i{width:10px;height:10px;border-radius:3px;background:var(--accent);display:inline-block}
+.box.people h3 i{background:var(--rbf)}
+.box ul{list-style:none;margin:0;padding:0}
+.box li{padding:9px 0;border-top:1px solid var(--line-2);font-size:15.5px;line-height:1.45;color:var(--ink-2)}
+.box li:first-child{border-top:0}
+.box li b{color:var(--ink);font-weight:600;display:block}
+
+/* projects */
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;list-style:none}
+.chip{font:600 14.5px/1 var(--f-body);padding:10px 14px;border:1px solid var(--line);background:var(--card);color:var(--ink-2);cursor:pointer;border-radius:999px;transition:background-color .15s,color .15s,border-color .15s}
+.chip:hover{border-color:var(--ink);color:var(--ink)}
+.chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+.chip .n{opacity:.6;margin-left:6px}
+.plist{display:flex;flex-direction:column;gap:20px}
+.card{display:flex;flex-wrap:wrap;background:var(--card);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;text-decoration:none;color:inherit;transition:border-color .2s,box-shadow .2s,transform .2s}
+.card:hover{border-color:color-mix(in srgb,var(--ink) 40%,var(--line));box-shadow:var(--shadow);transform:translateY(-2px);color:inherit}
+.card-media{flex:1 1 300px;min-height:250px;position:relative}
+.card-media .media{position:absolute;inset:0;border-radius:0;height:100%}
+.card-body{flex:1.3 1 340px;padding:26px 28px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.card h3{font-weight:600;font-size:24px;line-height:1.2;margin:0;letter-spacing:-.015em}
+.card .sum{margin:0;color:var(--ink-2)}
+.card .result{margin:0;font-weight:700;color:var(--accent);display:flex;gap:8px;align-items:flex-start;line-height:1.45}
+.card .result svg{width:18px;height:18px;flex:none;margin-top:2px}
+.tags{display:flex;flex-wrap:wrap;gap:6px;list-style:none;margin:2px 0 0;padding:0}
+.tags li{font-size:13.5px;padding:3px 9px;border-radius:6px;background:var(--card-2);border:1px solid var(--line);color:var(--ink-2)}
+.more{margin-top:auto;padding-top:8px;font-weight:700;color:var(--accent);display:inline-flex;align-items:center;gap:6px}
+.more svg{width:16px;height:16px;transition:transform .2s}
+.card:hover .more svg{transform:translateX(4px)}
+
+/* experience */
+.job{display:flex;flex-wrap:wrap;gap:8px 32px;padding:24px 0;border-top:1px solid var(--line)}
+.job:last-child{border-bottom:1px solid var(--line)}
+.job .when{flex:1 1 170px;margin:0;font-size:15px;color:var(--ink-3);line-height:1.5}
+.job .when b{display:block;color:var(--ink);font-weight:600}
+.job .what{flex:3 1 380px;min-width:0}
+.job h3{font-weight:600;font-size:21px;margin:0}
+.job .org{margin:2px 0 8px;color:var(--accent);font-weight:600}
+.job ul{margin:0;padding-left:1.1em;color:var(--ink-2)}
+.job li{margin:.35em 0}
+.job li::marker{color:var(--accent)}
+.num{font-weight:700;color:var(--ink)}
+
+/* leadership */
+.lgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+@media (max-width:700px){.lgrid{grid-template-columns:minmax(0,1fr)}}
+.lc{background:var(--card);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column;min-width:0}
+.lc .media{border-radius:0;border-width:0 0 1.5px 0}
+.lc-body{padding:20px 22px 22px;display:flex;flex-direction:column;gap:6px}
+.lc h3{font-weight:600;font-size:20px;margin:0}
+.lc p{margin:0;color:var(--ink-2)}
+.lc.feature{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr)}
+.lc.feature .media{border-width:0 1.5px 0 0;height:100%;min-height:300px}
+.lc.feature .lc-body{padding:28px 30px;justify-content:center;gap:10px}
+.lc.feature h3{font-size:24px}
+@media (max-width:700px){.lc.feature{grid-template-columns:minmax(0,1fr)}.lc.feature .media{border-width:0 0 1.5px 0;min-height:0;aspect-ratio:3/2;height:auto}}
+blockquote{margin:6px 0 0;padding:2px 0 2px 16px;border-left:3px solid var(--accent);font-size:17.5px;line-height:1.6;color:var(--ink);font-style:italic}
+.textlink{font-weight:700;text-decoration:none;margin-top:4px}
+
+/* skills */
+.legend{display:flex;flex-wrap:wrap;gap:8px 18px;margin:0;padding:0;list-style:none;font-size:14.5px;color:var(--ink-2)}
+.legend li{display:flex;align-items:center;gap:8px}
+.sgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+@media (max-width:700px){.sgrid{grid-template-columns:minmax(0,1fr)}}
+.sg{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:20px 22px}
+.sg h3{font-size:17px;font-weight:600;margin:0 0 6px}
+.sg ul{list-style:none;margin:0;padding:0}
+.sg li{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:8px 0;border-top:1px solid var(--line-2);font-size:15.5px;line-height:1.35}
+.sg li:first-child{border-top:0}
+.lvl{font:700 11px/1 var(--f-body);letter-spacing:.04em;text-transform:uppercase;padding:5px 8px;border-radius:6px;white-space:nowrap;flex:none;border:1px solid transparent}
+.lvl.p{background:var(--accent-soft);color:var(--accent)}
+.lvl.c{border-color:var(--line);color:var(--ink-2)}
+.lvl.s{border:1px dashed var(--ink-3);color:var(--ink)}
+.lvl.w{background:var(--ink);color:var(--bg)}
+.courses{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,260px),1fr));gap:0 28px;list-style:none;margin:0;padding:0}
+.courses li{display:grid;grid-template-columns:72px minmax(0,1fr);gap:10px;padding:9px 0;border-top:1px solid var(--line-2);font-size:15px;line-height:1.4}
+.courses code{font:500 12px/1.6 var(--f-mono);color:var(--ink-3)}
+.courses small{display:block;font-size:13px;font-weight:600;color:var(--accent)}
+
+/* contact band */
+.band{background:var(--band);color:var(--band-ink);border-radius:var(--r);padding:36px 32px;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:22px}
+.band h2{font-weight:600;font-size:clamp(28px,3.2vw,36px);margin:0}
+.band p{margin:6px 0 0;color:var(--band-ink-2)}
+.band .btns{display:flex;flex-wrap:wrap;gap:10px}
+.band .btn.light{background:var(--band-btn);color:var(--band-btn-ink)}
+.band .btn.light:hover{background:transparent;color:var(--band-ink);border-color:var(--band-ink)}
+.band .btn.outline{border-color:color-mix(in srgb,var(--band-ink) 45%,transparent);color:var(--band-ink)}
+.band .btn.outline:hover{border-color:var(--band-ink)}
+.site-foot{padding-block:0 40px;color:var(--ink-3);font-size:14px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
+
+/* ---------- case study sheet ---------- */
+.overlay{position:fixed;inset:0;z-index:100;background:var(--scrim);overflow-y:auto;overscroll-behavior:contain;padding:calc(env(safe-area-inset-top,0px) + 24px) var(--gut) calc(env(safe-area-inset-bottom,0px) + 24px)}
+@media (max-width:600px){.overlay{padding-inline:8px}}
+.cs{max-width:1100px;margin:0 auto;background:var(--bg);border-radius:20px;box-shadow:var(--shadow);overflow:clip}
+.cs-bar{position:sticky;top:-24px;z-index:3;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 14px 12px 22px;background:var(--card);border-bottom:1px solid var(--line)}
+.cs-bar .ids{font-weight:600;font-size:15px;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--ink-2)}
+.cs-bar .btns{display:flex;gap:6px;flex:none}
+.icon-btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-width:44px;min-height:40px;padding:0 12px;border-radius:10px;border:1px solid var(--line);background:var(--card-2);color:var(--ink);font:600 14.5px/1 var(--f-body);cursor:pointer}
+.icon-btn:hover{border-color:var(--ink)}
+.cs-inner{padding:clamp(20px,4vw,44px)}
+.cs-head h2{font-weight:600;font-size:clamp(30px,4.2vw,44px);line-height:1.08;margin:8px 0 0;letter-spacing:-.03em}
+.cs-head .sum{font-size:19px;color:var(--ink-2);max-width:62ch;margin:12px 0 0}
+.cs-hero{margin:26px 0 34px}
+.art-cap{font-size:14.5px;color:var(--ink-3);margin:8px 2px 0;max-width:72ch}
+.cs-cols{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:clamp(24px,4vw,44px);align-items:start}
+@media (max-width:860px){.cs-cols{grid-template-columns:minmax(0,1fr)}}
+.lbl{font:700 13px/1.2 var(--f-body);letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin:30px 0 12px}
+.cs-main>.lbl:first-child{margin-top:0}
+.cs-main p{margin:0 0 1em;max-width:64ch}
+.cs-main ul{margin:0;padding-left:1.15em;max-width:64ch}
+.cs-main li{margin:.5em 0}
+.cs-main li::marker{color:var(--accent)}
+.story{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:12px;padding:16px 20px;margin:24px 0 0;max-width:64ch}
+.story b{display:block;font-family:var(--f-display);font-weight:600;font-size:16px;margin-bottom:4px}
+.story p{margin:0;color:var(--ink-2)}
+.vid{aspect-ratio:auto;background:#05080B;display:flex;justify-content:center;border-radius:12px}
+.vid video{width:auto;max-width:100%;height:min(78vh,760px);object-fit:contain;background:#05080B}
+.vid.wide video{width:100%;height:auto;aspect-ratio:16/9;border-radius:12px}
+.tbl-scroll{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--card);max-width:64ch}
+.mtable{width:100%;border-collapse:collapse;font-size:15px;min-width:460px}
+.mtable th,.mtable td{padding:10px 14px;text-align:left;border-bottom:1px solid var(--line-2);vertical-align:top;font-variant-numeric:tabular-nums}
+.mtable thead th{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3)}
+.mtable tbody th{font-weight:600}
+.mtable tbody tr:last-child th,.mtable tbody tr:last-child td{border-bottom:0}
+.mtable tr.pick th,.mtable tr.pick td{background:var(--accent-soft)}
+.pick-tag{display:inline-block;margin-left:6px;font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--accent)}
+.code{margin:0;max-width:100%;overflow-x:auto;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px;font:500 13.5px/1.65 var(--f-mono);color:var(--ink)}
+.code code{font:inherit;white-space:pre}
+.teamnote{background:var(--accent-soft);border-radius:12px;padding:14px 18px;font-size:15.5px;line-height:1.55;margin-top:18px;max-width:64ch}
+.teamnote b{display:block;font-weight:700;margin-bottom:2px}
+.details{margin:0;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:6px 20px}
+.details div{padding:11px 0;border-top:1px solid var(--line-2)}
+.details div:first-child{border-top:0}
+.details dt{font-size:12.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3)}
+.details dd{margin:2px 0 0;font-size:15.5px;line-height:1.45}
+.results{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.results li{display:grid;grid-template-columns:30px minmax(0,1fr);gap:12px;align-items:start;font-size:15.5px;line-height:1.45}
+.results .b{width:28px;height:28px;border-radius:50%;background:var(--accent-soft);color:var(--accent);display:grid;place-items:center;font-weight:700;font-size:13.5px;margin-top:-2px}
+.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,280px),1fr));gap:16px}
+.gallery figure{margin:0}
+.gallery figcaption{font-size:14px;color:var(--ink-3);margin-top:7px}
+.cs-links{display:flex;flex-wrap:wrap;gap:10px}
+.cs-foot{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;border-top:1px solid var(--line);margin-top:40px;padding-top:18px}
+.cs-foot button{font:600 16px/1.3 var(--f-body);background:transparent;border:0;color:var(--ink);cursor:pointer;padding:6px 0;text-align:left}
+.cs-foot button:hover{color:var(--accent)}
+.cs-foot button span{display:block;color:var(--ink-3);font-size:13px;font-weight:600}
+.cs-foot button.next{text-align:right;margin-left:auto}
+
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{transition:none!important;animation:none!important}
+}
+</style>
+
+<header class="topbar" id="topbar">
+  <div class="wrap">
+    <a class="brand" href="#top" data-scroll="top">Adam Najjar</a>
+    <nav class="nav" aria-label="Sections">
+      <ul>
+        <li><a href="#about" data-scroll="about">About</a></li>
+        <li><a href="#projects" data-scroll="projects">Projects</a></li>
+        <li><a href="#experience" data-scroll="experience">Experience</a></li>
+        <li><a href="#leadership" data-scroll="leadership">Leadership</a></li>
+        <li><a href="#skills" data-scroll="skills">Skills</a></li>
+        <li><a href="#contact" data-scroll="contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap layout" id="top">
+  <aside class="side" aria-label="Profile">
+    <div id="portrait-slot"></div>
+    <div>
+      <h1>Adam Najjar</h1>
+      <p class="sub">Third-year Aerospace Engineering student at Toronto Metropolitan University</p>
+    </div>
+    <a class="seeking" href="#contact" data-scroll="contact"><i aria-hidden="true"></i>Seeking a co-op term in 2027</a>
+    <div>
+      <p class="cap">Availability</p>
+      <div class="rows">
+        <div><b>January 2027</b><span>12 months</span></div>
+        <div><b>May 2027</b><span>12 or 16 months</span></div>
+        <div><b>September 2027</b><span>12 months</span></div>
+      </div>
+    </div>
+    <div class="contact-list">
+      <div class="row"><a href="https://www.linkedin.com/in/adam-najjar1" target="_blank" rel="noopener" style="font-weight:600;text-decoration:none">linkedin.com/in/adam-najjar1</a></div>
+      <div class="row"><span class="email-text">adam.najjar@torontomu.ca</span><button class="mini" type="button" data-copy>Copy</button></div>
+      <div class="row"><span style="color:var(--ink-2)">GTA, Ontario · open to relocating</span></div>
+    </div>
+    <a class="btn primary" href="Adam_Najjar_Resume.pdf" target="_blank" rel="noopener" data-resume>
+      <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2v9M4 7l4 4 4-4M2 14h12" fill="none" stroke="currentColor" stroke-width="1.7"/></svg>Download resume</a>
+    <p class="note" data-resume-note></p>
+    <div>
+      <p class="cap">Tools</p>
+      <ul class="chips">
+        <li>CATIA V5</li><li>Onshape</li><li>MATLAB</li><li>Simulink</li><li>OpenRocket</li><li>GD&amp;T</li><li>FlightGear</li><li>Swift</li><li>SwiftUI</li><li>3D printing</li>
+      </ul>
+    </div>
+    <p style="margin:0;font-size:15px;color:var(--ink-2)">English · Arabic (basic)</p>
+  </aside>
+
+  <main class="main">
+    <!-- About -->
+    <section class="sec about" id="about">
+      <p class="eyebrow">About</p>
+      <h2>More than a skillset and engineering knowledge.</h2>
+      <p class="lead">Aerospace started with my uncle, an aerospace engineer. When I was a kid he showed me videos and pictures from his workplace, and it looked like something out of a movie. It's been the plan ever since.</p>
+      <p>At TMU I've designed a retractable overhead-bin ladder for the Airbus A380, reverse-engineered and redesigned a combat-robot gearbox, built a six-degree-of-freedom flight model I can fly with a joystick, analyzed linkages for a walking robot, and helped launch and recover a competition rocket with the Metropolitan Aerospace Rocket Society. On my own time I taught myself Swift and SwiftUI to build Optimal, an all-in-one planner app for iPhone that's now in public beta.</p>
+      <p>A lot of who I am also comes from outside the classroom. I lead outreach for a funeral aid nonprofit, spent a summer in Bosnia with Islamic Relief, started a debate program from nothing, was head coach at a swim school, and for the past three years at Techspan I've been the one getting sales, technical and web teams to agree on how 30,000+ products should be listed. I've worked in a lot of different fields with a lot of different people, and that gives me a different perspective on an engineering team.</p>
+      <p class="sig">I bring both sides of the spectrum.</p>
+      <div class="two">
+        <div class="box">
+          <h3><i aria-hidden="true"></i>Engineering</h3>
+          <ul>
+            <li><b>CAD and mechanical design</b>CATIA V5, Onshape, GD&amp;T, engineering drawings, weighted design trade-off studies</li>
+            <li><b>Simulation and analysis</b>MATLAB, Simulink, OpenRocket, kinematic and velocity analysis</li>
+            <li><b>Build and test</b>Rocketry, 3D printing, flight telemetry analysis</li>
+            <li><b>Software</b>Self-taught Swift and SwiftUI, app in public beta</li>
+          </ul>
+        </div>
+        <div class="box people">
+          <h3><i aria-hidden="true"></i>People</h3>
+          <ul>
+            <li><b>Leadership</b>Head coach over 9 instructors and 27 swimmers</li>
+            <li><b>Outreach and fundraising</b>$20,000+ raised with Yusr, $9,000 in Bosnia</li>
+            <li><b>Communication</b>Founded a debate program; delivered the MARS design presentation</li>
+            <li><b>Coordination</b>Three teams aligned on 30,000+ product records</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section class="sec" id="projects">
+      <div class="sec-head">
+        <h2>Selected projects</h2>
+        <p>Five engineering projects and one app</p>
+      </div>
+      <ul class="filters" role="toolbar" aria-label="Filter projects" id="filters"></ul>
+      <div class="plist" id="project-list"></div>
+    </section>
+
+    <!-- Experience -->
+    <section class="sec" id="experience">
+      <div class="sec-head">
+        <h2>Experience</h2>
+        <p>Alongside school</p>
+      </div>
+      <div>
+        <article class="job">
+          <p class="when"><b>May 2023 – Present</b>Oakville, ON</p>
+          <div class="what">
+            <h3>Marketing Associate</h3>
+            <p class="org">Techspan Industries</p>
+            <ul>
+              <li>Organized <span class="num">30,000+</span> product records into clear categories with descriptions, so customers can find products more easily.</li>
+              <li>Fixed product names full of abbreviations, all caps and wrong information, plus missing details and wrong images, in Excel and CATSY. Customer complaints about missing info and wrong images dropped sharply.</li>
+              <li>Get sales, technical and web teams to agree on clear, consistent naming, which has contributed to higher site traffic.</li>
+              <li>Automated repetitive catalogue work and work from supplier spec sheets.</li>
+            </ul>
+          </div>
+        </article>
+        <article class="job">
+          <p class="when"><b>Jan 2023 – Jan 2025</b>Mississauga, ON</p>
+          <div class="what">
+            <h3>Head Coach &amp; Swim Instructor</h3>
+            <p class="org">Making Waves Swim School</p>
+            <ul>
+              <li>Ran daily operations and supervised <span class="num">9</span> instructors teaching <span class="num">27</span> swimmers over two shifts a week, enforcing safety procedures in a safety-critical environment.</li>
+              <li>Built a standardized training program for instructors and mentored them with in-water coaching and regular feedback.</li>
+              <li>Saw big improvements in both the instructors' teaching and the kids' progress.</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Leadership -->
+    <section class="sec" id="leadership">
+      <div class="sec-head">
+        <h2>Leadership &amp; volunteering</h2>
+        <p>Where the people side comes from</p>
+      </div>
+      <div class="lgrid">
+        <article class="lc feature">
+          <div data-slot="lead-bosnia" data-ratio="r-fill"></div>
+          <div class="lc-body">
+            <p class="meta">Volunteer · Tuzla &amp; Sarajevo, Bosnia · Jun – Jul 2024</p>
+            <h3>Islamic Relief Canada</h3>
+            <p>I spent a summer in Bosnia running daily activities for a group of <span class="num">20</span> children, out of <span class="num">200</span> in an orphanage program, and raised <span class="num">$9,000</span> in humanitarian aid.</p>
+            <blockquote>We took the children at the orphanage shopping for essentials. One boy asked only for shoes, showed me his old pair, ripped apart, and said he did not need anything else because he did not want to waste the money. I still think about him.</blockquote>
+          </div>
+        </article>
+        <article class="lc">
+          <div data-slot="lead-yusr" data-set="lead-yusr,lead-yusr-team" data-ratio="r-16-9"></div>
+          <div class="lc-body">
+            <p class="meta">Outreach Lead · Mississauga · Oct 2024 – Present</p>
+            <h3>Yusr Funeral Financial Aid</h3>
+            <p>Built partnerships with <span class="num">3</span> community organizations, helping grow the program past <span class="num">100</span> participants and raise <span class="num">$20,000+</span>.</p>
+          </div>
+        </article>
+        <article class="lc">
+          <div data-slot="lead-seeds" data-set="lead-seeds,lead-seeds-grad" data-ratio="r-16-9"></div>
+          <div class="lc-body">
+            <p class="meta">Founder · GTA · Nov 2021 – Jun 2024</p>
+            <h3>Seeds of Leadership</h3>
+            <p>Started a debate and public speaking program from nothing. It grew into <span class="num">30</span>-student sessions and tournaments with guest speakers, with parents coming out to watch.</p>
+          </div>
+        </article>
+        <article class="lc">
+          <div data-slot="lead-mars" data-ratio="r-16-9"></div>
+          <div class="lc-body">
+            <p class="meta">Team member · TMU · Feb – May 2026</p>
+            <h3>Metropolitan Aerospace Rocket Society</h3>
+            <p>TMU's student rocketry design team. My four-person team designed, built and launched a competition rocket, and I prepared and delivered our design presentation.</p>
+            <a class="textlink" href="#project-mars" data-open="mars">Read the rocket case study →</a>
+          </div>
+        </article>
+        <article class="lc">
+          <div data-slot="lead-sports" data-set="lead-sports,lead-outdoors-1,lead-outdoors-2" data-ratio="r-16-9"></div>
+          <div class="lc-body">
+            <p class="meta">Off the clock</p>
+            <h3>Sports, the gym &amp; the outdoors</h3>
+            <p>I love the gym and play a lot of sports, and I try to be good at all of them. I always set gym goals that seem out of reach at the time. Chasing them keeps me disciplined and focused. I also love spending time outside and exploring new places.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section class="sec" id="skills">
+      <div class="sec-head">
+        <h2>Skills &amp; coursework</h2>
+        <p>Tagged by where I've used each one</p>
+      </div>
+      <ul class="legend">
+        <li><span class="lvl p">Project</span>Used on a project</li>
+        <li><span class="lvl c">Course</span>Covered in coursework</li>
+        <li><span class="lvl s">Self-taught</span>Learned on my own</li>
+        <li><span class="lvl w">Work</span>Used at a job</li>
+      </ul>
+      <div class="sgrid">
+        <div class="sg">
+          <h3>Design &amp; CAD</h3>
+          <ul>
+            <li>CATIA V5 <span class="lvl p">Project</span></li>
+            <li>Onshape <span class="lvl p">Project</span></li>
+            <li>GD&amp;T <span class="lvl p">Project</span></li>
+            <li>OpenRocket <span class="lvl p">Project</span></li>
+            <li>3D printing <span class="lvl p">Project</span></li>
+            <li>2D drawings &amp; clearance checks <span class="lvl p">Project</span></li>
+            <li>Reverse engineering <span class="lvl p">Project</span></li>
+            <li>SolidWorks <span class="lvl s">Self-taught</span></li>
+          </ul>
+        </div>
+        <div class="sg">
+          <h3>Analysis &amp; simulation</h3>
+          <ul>
+            <li>MATLAB <span class="lvl p">Project</span></li>
+            <li>Simulink <span class="lvl p">Project</span></li>
+            <li>FlightGear <span class="lvl p">Project</span></li>
+            <li>Kinematic &amp; velocity analysis <span class="lvl p">Project</span></li>
+            <li>Hand calculations <span class="lvl p">Project</span></li>
+            <li>Runge-Kutta numerical integration <span class="lvl p">Project</span></li>
+            <li>Telemetry &amp; test data analysis <span class="lvl p">Project</span></li>
+            <li>Stress &amp; fatigue analysis <span class="lvl c">Course</span></li>
+            <li>Thermo, heat transfer &amp; fluids <span class="lvl c">Course</span></li>
+          </ul>
+        </div>
+        <div class="sg">
+          <h3>Software</h3>
+          <ul>
+            <li>Swift <span class="lvl s">Self-taught</span></li>
+            <li>SwiftUI <span class="lvl s">Self-taught</span></li>
+            <li>StoreKit &amp; RevenueCat <span class="lvl p">Project</span></li>
+            <li>TestFlight beta testing <span class="lvl p">Project</span></li>
+            <li>Xcode <span class="lvl p">Project</span></li>
+            <li>C</li>
+            <li>SQL</li>
+            <li>HTML &amp; CSS</li>
+            <li>Linux command line</li>
+          </ul>
+        </div>
+        <div class="sg">
+          <h3>Project &amp; tools</h3>
+          <ul>
+            <li>Gantt charts &amp; schedules <span class="lvl p">Project</span></li>
+            <li>Cost estimates <span class="lvl p">Project</span></li>
+            <li>Risk analysis <span class="lvl p">Project</span></li>
+            <li>Weighted decision matrices <span class="lvl p">Project</span></li>
+            <li>Technical reports <span class="lvl p">Project</span></li>
+            <li>Excel <span class="lvl w">Work</span></li>
+            <li>CATSY <span class="lvl w">Work</span></li>
+            <li>Power BI</li>
+            <li>JIRA &amp; Trello</li>
+          </ul>
+        </div>
+      </div>
+      <div class="box">
+        <h3 style="margin-bottom:10px">Coursework at Toronto Metropolitan University</h3>
+        <ul class="courses">
+          <li><code>AER 504</code><span>Aerodynamics<small>In progress · Fall 2026</small></span></li>
+          <li><code>AER 507</code><span>Materials &amp; Manufacturing<small>In progress · Fall 2026</small></span></li>
+          <li><code>EES 612</code><span>Electric Machines &amp; Actuators<small>In progress · Fall 2026</small></span></li>
+          <li><code>Next</code><span>Control Systems<small>Winter 2027</small></span></li>
+          <li><code>AER 416</code><span>Flight Mechanics</span></li>
+          <li><code>AER 520</code><span>Stress Analysis</span></li>
+          <li><code>AER 403</code><span>Mechanisms &amp; Vibrations</span></li>
+          <li><code>AER 423</code><span>Thermodynamics &amp; Heat Transfer</span></li>
+          <li><code>AER 316</code><span>Fluid Mechanics</span></li>
+          <li><code>AER 318</code><span>Dynamics</span></li>
+          <li><code>AER 320</code><span>Statics &amp; Strength of Materials</span></li>
+          <li><code>MTH 510</code><span>Numerical Analysis</span></li>
+          <li><code>AER 222</code><span>Engineering Design &amp; Graphical Communication</span></li>
+          <li><code>AER 404</code><span>Intro to Aerospace Engineering</span></li>
+          <li><code>MTL 200</code><span>Materials Science Fundamentals</span></li>
+          <li><code>EES 512</code><span>Electric Circuits</span></li>
+          <li><code>CPS 125</code><span>Digital Computation &amp; Programming</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="band">
+      <div>
+        <h2>Let's talk about 2027.</h2>
+        <p>Looking for an aerospace or mechanical co-op · adam.najjar@torontomu.ca</p>
+      </div>
+      <div class="btns">
+        <button class="btn light" type="button" data-copy>Copy email</button>
+        <a class="btn outline" href="https://www.linkedin.com/in/adam-najjar1" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </section>
+  </main>
+</div>
+
+<footer class="wrap site-foot">
+  <span>Adam Najjar · GTA, Ontario</span>
+  <span>Updated October 2026</span>
+</footer>
+
+<div class="lightbox" id="lightbox" hidden role="dialog" aria-modal="true" aria-label="Image viewer">
+  <button type="button" class="icon-btn lb-close" data-lb-close>Close ✕</button>
+  <figure><img id="lb-img" alt=""><figcaption id="lb-cap"></figcaption></figure>
+  <div class="lb-nav" hidden><button type="button" class="icon-btn lb-btn" data-lb-step="-1" aria-label="Previous photo">←</button><span class="lb-count" id="lb-count" aria-live="polite"></span><button type="button" class="icon-btn lb-btn" data-lb-step="1" aria-label="Next photo">→</button></div>
+</div>
+
+<div class="overlay" id="overlay" hidden>
+  <article class="cs" role="dialog" aria-modal="true" aria-labelledby="cs-title" id="cs"></article>
+</div>
+
+<script>
+(function(){
+"use strict";
+
+/* ================= MEDIA SLOTS =================
+   Every photo/video on the page is one entry here. When real files arrive,
+   add src (and type:"video" for clips) — the placeholder swaps for the media. */
+const MEDIA = {
+  "portrait":        {label:"Adam Najjar", src:"media/portrait.jpg", pos:"50% 30%", alt:"Adam Najjar in a black knit polo with his arms crossed, in a bright glass-walled office"},
+  "mars-onshape":    {label:"The team's Onshape model of the rocket", src:"media/mars-onshape-rocket.webp", fit:"contain", alt:"Three-quarter view of the rocket model in Onshape with the nose cone separated, showing the electronics bay, and fins reading The Nights Watch"},
+  "mars-openrocket": {label:"OpenRocket model with CG, CP and the simulated flight", src:"media/mars-openrocket.png", fit:"contain", alt:"OpenRocket side view of the rocket with its centre of gravity, centre of pressure and simulated flight data"},
+  "mars-cad":        {label:"Electronics sled and bulkhead from the team's Onshape model", src:"media/mars-electronics-cad.png", fit:"contain", alt:"CAD render of an electronics sled carrying a circuit board, with a bulkhead, eye bolt and retaining ring"},
+  "mars-liftoff":    {label:"Liftoff, from our launch video", src:"media/mars-liftoff-wide.jpg", alt:"The rocket leaving the launch rail on a column of smoke under a grey sky"},
+  "mars-pad":        {label:"On the pad, ready to fly", src:"media/mars-pad.jpg", alt:"Wide view of the rocket on its launch stand in an open field"},
+  "mars-team":       {label:"The team with the rocket before launch", src:"media/mars-team.jpg", pos:"50% 22%", alt:"Three team members standing beside the rocket on its launch rail"},
+  "mars-recovery":   {label:"Recovered after the flight, parachute still attached", src:"media/mars-recovery.jpg", alt:"The rocket lying in tall grass with its orange parachute"},
+  "mars-1":          {label:"Team build session"},
+  "mars-2":          {label:"Presenting our design", src:"media/mars-presenting.jpg", alt:"Adam presenting a slide of simulated flight results to the class"},
+  "mars-3":          {label:"Our OpenRocket prediction against the onboard altimeter data from the flight", src:"media/mars-telemetry.png", fit:"contain", alt:"Line chart of altitude against time from ignition. The OpenRocket prediction peaks at 193 metres and lands at 39 seconds; the flight telemetry peaks at 162 metres and lands at about 26 seconds."},
+  "mars-video":      {label:"Launch highlights: on the pad, liftoff in slow motion, and the recovery", type:"video", src:"media/mars-launch-reel.mp4", poster:"media/mars-liftoff.jpg"},
+  "gearbox-cad":     {label:"Gearbox assembly, housing shown transparent", src:"media/gearbox-assembly-cad.png", fit:"contain", alt:"Render of the gearbox assembly with gears, shafts and bearings inside a transparent housing"},
+  "gearbox-redesign":  {label:"The redesigned gearbox, with cut-away housing sidewalls", src:"media/gearbox-redesign-cad.png", fit:"contain", alt:"CAD render of the redesigned gearbox housing with triangular cut-outs in the sidewalls showing the gears inside"},
+  "gearbox-dwg-gear":  {label:"My drawing: Large Gear B, as measured", src:"media/gearbox-drawing-large-gear-b.png", fit:"contain", alt:"Engineering drawing of Large Gear B with front view, section A-A and tooth detail"},
+  "gearbox-dwg-shaft": {label:"My drawing: Gear Shaft A", src:"media/gearbox-drawing-gear-shaft-a.png", fit:"contain", alt:"Engineering drawing of Gear Shaft A with diameters, lengths and section A-A"},
+  "gearbox-dwg-case":  {label:"My drawing: Gear Box Case", src:"media/gearbox-drawing-case.png", fit:"contain", alt:"Engineering drawing of the gearbox case with hole pattern and section A-A"},
+  "gearbox-2":       {label:"My drawing: Large Gear B redesigned with a spoked web", src:"media/gearbox-drawing-gear-b-redesign.png", fit:"contain", alt:"Engineering drawing of the redesigned Large Gear B with four spoke cut-outs, section A-A and a tooth detail"},
+  "flightsim-aircraft": {label:"Inside the aircraft block: actuator models feeding the 12-state loop", src:"media/flightsim-simulink-aircraft.png", fit:"contain", alt:"Simulink diagram with actuator models for two throttles, aileron, elevator and rudder feeding the equations of motion and an integrator that outputs the 12 aircraft states"},
+  "flightsim-top":   {label:"Top-level Simulink model: joystick inputs in, states out to FlightGear", src:"media/flightsim-simulink-top.png", fit:"contain", alt:"Top-level Simulink model with joystick input block, aircraft subsystem, state outputs and FlightGear interface"},
+  "flightsim-plots": {label:"All 12 states over the 50-second validation run", src:"media/flightsim-validation-plots.png", fit:"contain", alt:"Grid of twelve MATLAB plots of longitude, latitude, altitude, roll, pitch, yaw, U, V, W, P, Q and R over 50 seconds"},
+  "flightsim-hero":  {label:"Our model flying in FlightGear, mid-bank between the clouds", src:"media/flightsim-flightgear.jpg", alt:"FlightGear on a laptop screen: a white airliner with a blue tail banking between clouds over the sea"},
+  "flightsim-2":     {label:"Flying it with the joystick in the lab", src:"media/flightsim-joystick.jpg", alt:"A hand on a Logitech flight joystick next to a laptop running FlightGear, with the airliner in the clouds on screen"},
+  "flightsim-video": {label:"Flying our model with the joystick, in real time", type:"video", wide:true, src:"media/flightsim-flight.mp4", poster:"media/flightsim-flight-poster.jpg"},
+  "robot-anim":      {label:"MATLAB output: final design animation with both foot paths", src:"media/robot-matlab-animation.png", fit:"contain", alt:"MATLAB plot of the final linkage design with two mirrored legs and their foot paths"},
+  "robot-vel":       {label:"MATLAB output: angular velocity of every link vs. crank angle", src:"media/robot-angular-velocities.png", fit:"contain", alt:"MATLAB plot of the angular velocity of each link against input crank angle"},
+  "robot-photo":     {label:"Our robot on race day, with the class watching", src:"media/robot-race-day.jpg", pos:"55% 68%", alt:"The walking robot, with blue tape around its body and blue feet, on the concrete race floor while a crowd of students watches"},
+  "robot-video":     {label:"Race day highlights. Ours is the one with the blue body.", type:"video", src:"media/robot-run.mp4", poster:"media/robot-run-poster.jpg"},
+  "a380-catia":      {label:"My CATIA V5 model of the track, trolleys and ladder", src:"media/a380-catia-model.jpg", alt:"CATIA render of the ceiling track frame with four trolleys and the ladder deployed"},
+  "a380-sketch":     {label:"My concept sketch: the ceiling trolley and fold-down ladder, with notes on a pulley drive, request buttons, auto-retract and warning lights", src:"media/a380-concept-sketch.jpg", fit:"contain", alt:"Hand-drawn concept sketch of a ladder trolley on a ceiling track with handwritten design notes"},
+  "a380-dwg-frame":  {label:"My drawing: ladder frame", src:"media/a380-drawing-frame.png", fit:"contain", alt:"Engineering drawing of the aluminum ladder frame"},
+  "a380-dwg-bracket":{label:"My drawing: wheel mount bracket", src:"media/a380-drawing-bracket.png", fit:"contain", alt:"Engineering drawing of the aluminum wheel mount bracket"},
+  "optimal-hero":    {label:"A workout in progress, the Home screen and the money summary", src:"media/optimal-hero.jpg", alt:"Three iPhone screens from Optimal: an active Pull Day workout with sets checked off and a rest timer running, the Home screen with today's intake, training, to-dos and weather, and the Money summary with safe-to-spend and upcoming bills"},
+  "optimal-1":       {label:"Home screen", src:"media/optimal-home.jpg", alt:"Optimal's Home screen on an iPhone: greeting, habits complete, weather, calorie and macro intake, today's Push Day workout and the to-do list"},
+  "optimal-2":       {label:"Paywall with the three tiers", src:"media/optimal-paywall.jpg", alt:"Optimal Premium paywall listing the benefits and three plans: Monthly $4.99, Annual $39.99 marked Save 33%, and Lifetime $99.99, above a Start my 7-day free trial button"},
+  "optimal-3":       {label:"A workout in progress, rest timer running", src:"media/optimal-workout.jpg", alt:"An active Pull Day workout in Optimal: deadlift sets checked off against last session's numbers, total volume, and a red rest timer bar counting down"},
+  "optimal-video":   {label:"Walkthrough: Home, Food, Training, Money, Life and the Premium paywall", type:"video", src:"media/optimal-walkthrough.mp4", poster:"media/optimal-walkthrough-poster.jpg"},
+  "lead-bosnia":     {label:"With kids from the program in Bosnia. Their faces are blurred for privacy.", src:"media/lead-bosnia.jpg", pos:"64% 35%", alt:"Adam in a blue volunteer shirt with five boys from the program and another volunteer, everyone else's face blurred"},
+  "lead-yusr":       {label:"Walking a visitor through how Yusr works at our booth", src:"media/lead-yusr-booth.jpg", pos:"50% 30%", alt:"Adam at the Yusr booth pointing to the $10,000 Community Wall board while talking to a visitor"},
+  "lead-yusr-team":  {label:"With the Yusr team and the $10,000 Community Wall", src:"media/lead-yusr-team.jpg", alt:"Six members of the Yusr team standing around the Community Wall board at their booth"},
+  "lead-seeds":      {label:"Running a session on British Parliamentary debate and public speaking", src:"media/lead-seeds-class.jpg", pos:"50% 30%", alt:"Adam speaking at the front of a classroom under a slide titled British Parliamentary and Public Speaking, with students at their desks"},
+  "lead-seeds-grad": {label:"Graduation day: students with their certificates. Faces are blurred for privacy.", src:"media/lead-seeds-grad.jpg", alt:"A large group of students holding certificates of completion with family members behind them, all faces blurred"},
+  "lead-mars":       {label:"The team with the rocket before launch", src:"media/mars-team.jpg", pos:"50% 22%", alt:"Three team members standing beside the rocket on its launch rail"},
+  "resume":          {label:"Adam Najjar, resume", src:"media/resume.png", alt:"Adam Najjar's one-page resume"},
+  "lead-sports":     {label:"On the bench at the gym, with a spotter", src:"media/lead-gym.jpg", alt:"Adam bench pressing a loaded barbell in a university gym while a friend in a cap spots him"},
+  "lead-outdoors-1": {label:"A handstand over a creek in the woods", src:"media/lead-outdoors-handstand.jpg", alt:"Adam in a yellow shirt doing a handstand on the rocks of a small creek in a green forest"},
+  "lead-outdoors-2": {label:"Harnessed up at the airfield before my skydive", src:"media/lead-outdoors-airfield.jpg", alt:"Adam in a skydiving harness on the grass at a small airfield before his jump, with a high-wing plane and a fuel truck behind him under a cloudy sky"}
+};
+
+/* ================= PROJECTS ================= */
+const FILTERS = [
+  {id:"all", label:"All"},
+  {id:"aero", label:"Aerospace"},
+  {id:"mech", label:"Mechanical design"},
+  {id:"soft", label:"Software & simulation"}
+];
+
+const PROJECTS = [
+  {
+    id:"mars", dwg:"AN-01", art:"rocket",
+    title:"Competition Rocket",
+    full:"Metropolitan Aerospace Rocket Society (MARS)",
+    context:"MARS · TMU student design team",
+    ctxFull:"Metropolitan Aerospace Rocket Society (MARS), TMU's student rocketry design team",
+    dates:"Feb – May 2026", team:"4 people",
+    role:"Shared design work, schedule and risk analysis, telemetry analysis, and the team's design presentation",
+    tools:["OpenRocket","Onshape","3D printing","Telemetry analysis","Gantt chart","Risk analysis"],
+    tags:["aero"],
+    summary:"Designed, built and launched a competition rocket with a four-person team, then checked the real flight against the simulation.",
+    brief:"Design, build and fly a competition rocket, bring it back in one piece, and present the design.",
+    did:[
+      "Split the design work evenly with three teammates, and simulated the rocket in OpenRocket before building it.",
+      "3D-printed parts for the rocket.",
+      "Built the project schedule and worked through the risk analysis.",
+      "Prepared and delivered the team's whole design presentation myself.",
+      "After the launch, analyzed the onboard altitude, velocity, pressure, acceleration and orientation telemetry against the OpenRocket prediction."
+    ],
+    results:["Successful launch","Full parachute deployment and recovery","No significant damage to the vehicle"],
+    heroCap:"Liftoff, from our launch video below. Select any image in the gallery to see it full size.",
+    card:"mars-liftoff", hero:"mars-liftoff", gallery:["mars-onshape","mars-openrocket","mars-3","mars-cad","mars-pad","mars-team","mars-recovery","mars-2"], video:"mars-video"
+  },
+  {
+    id:"gearbox", dwg:"AN-02", art:"gears",
+    title:"Robotic Gearbox Reverse Engineering",
+    context:"AER 404 · course project",
+    dates:"Jan – Feb 2026", team:"4 people",
+    role:"Measuring and modelling, concept scoring, redesign trade-offs and the 2D engineering drawings",
+    tools:["CATIA V5","GD&T","Weighted decision matrices","Hand calculations","Cost estimate","Gantt chart"],
+    tags:["mech"],
+    summary:"Took apart a competitor's robot-combat gearbox and made it lighter and easier to assemble, without changing the 50:14 ratio or how it mounts.",
+    brief:"The gearbox comes from a competitor's combat robot. Make it cheaper, lighter and easier to assemble, keep the 50:14 gear ratio, and keep it a drop-in replacement.",
+    did:[
+      "Disassembled the gearbox, then measured and modelled all 11 parts in CATIA V5 with GD&T.",
+      "Picked six components to redesign: input shaft, output shaft, 50T gear, 14T gear, housing and bearings.",
+      "Scored 14 concepts in weighted decision matrices, one matrix per component.",
+      "Made the 2D engineering drawings for the gear, shaft and case, with section views, detail views and a tolerance block.",
+      "Checked the redesign with hand calculations, and built the cost estimate and project schedule."
+    ],
+    story:{title:"The hard part", text:"Improving one component without making another one worse. The four of us didn't agree on how. We talked it through, agreed on weighted criteria, and let the scores decide. It was as much a communication problem as an engineering one."},
+    results:["Spoked 50T gear, 10% lighter","Washer replaced by a retention feature: one fewer part","Asymmetric input shaft that can't go in backwards","Narrower 14T gear, cut-away housing sidewalls, sealed bearings with axial retention","Same 50:14 ratio, still a drop-in fit"],
+    heroCap:"The original gearbox assembly, with the housing shown transparent. The redesign and my drawings are in the gallery below.",
+    card:"gearbox-cad", hero:"gearbox-cad", gallery:["gearbox-redesign","gearbox-2","gearbox-dwg-gear","gearbox-dwg-shaft","gearbox-dwg-case"]
+  },
+  {
+    id:"flightsim", dwg:"AN-03", art:"axes",
+    title:"Flight Simulator Physics Engine",
+    context:"AER 404 · course project",
+    dates:"Feb – Apr 2026", team:"5 people",
+    role:"Flight dynamics equations and numerical integration (integrated all the equations of motion), reviewer on navigation and the FlightGear interface, co-author of the report",
+    tools:["MATLAB","Simulink","FlightGear","Runge-Kutta integration","Joystick input"],
+    tags:["aero","soft"],
+    summary:"A six-degree-of-freedom physics engine for a twin-engine airliner in MATLAB and Simulink, flown in real time through FlightGear with a joystick.",
+    brief:"Build a physics engine that takes five pilot inputs (two throttles, aileron, elevator and rudder) and predicts all 12 aircraft states: position, attitude, velocities and body rates. The output has to drive FlightGear in real time.",
+    did:[
+      "Developed the flight dynamics equations with a teammate: the translational and rotational equations of motion with the full inertia matrix, and the kinematic equations for the Euler angle rates.",
+      "Co-led the numerical integration and integrated all of the flight dynamics equations, so the 12 states propagate over time and feed back into the aerodynamic and force calculations.",
+      "Reviewed the navigation subsystem (position to latitude, longitude and altitude) and the FlightGear output interface.",
+      "Co-wrote the technical report."
+    ],
+    teamNoteTitle:"The team",
+    teamNote:"Five-person team with a lead on each subsystem and two reviewers checking it. Teammates led the input processing, the aerodynamic model, navigation and the FlightGear interface.",
+    code:{title:"From our MATLAB code", text:"% Translational equations of motion (body axes)\nU0 = R*V - Q*W - g*sin(theta) + (X_T + X_A)/m;\nV0 = -R*U + P*W + g*sin(phi)*cos(theta) + (Y_T + Y_A)/m;\nW0 = Q*U - P*V + g*cos(phi)*cos(theta) + (Z_T + Z_A)/m;\n\n% One 4th-order Runge-Kutta step\nfunction x_next = rk4_integration(f, x, dt)\n  k1 = f(x);\n  k2 = f(x + 0.5*dt*k1);\n  k3 = f(x + 0.5*dt*k2);\n  k4 = f(x + dt*k3);\n  x_next = x + (dt/6)*(k1 + 2*k2 + 2*k3 + k4);\nend"},
+    results:["Stable, smooth response in all 12 states over the 50-second validation run","Checked against the reference trajectories provided with the course","Real-time FlightGear visualization with no noticeable lag","Flown with a joystick, pilot in the loop"],
+    artCap:"Body axes used in the model: x forward (roll rate p), y out the right wing (pitch rate q), z down (yaw rate r).",
+    heroCap:"Our model in FlightGear: the joystick inputs go into the Simulink model, and the 12 states it integrates drive the view in real time. Inside the aircraft block, saturation, rate limiters and first-order lags model the actuators before the equations of motion.",
+    card:"flightsim-hero", hero:"flightsim-hero", gallery:["flightsim-2","flightsim-aircraft","flightsim-top","flightsim-plots"], video:"flightsim-video"
+  },
+  {
+    id:"robot", dwg:"AN-04", fig:"linkage",
+    title:"Walking Robot Mechanism",
+    context:"AER 403 Mechanisms & Vibrations · course project",
+    dates:"Mar – Apr 2026", team:"3 people",
+    role:"Design selection, part of the MATLAB kinematic analysis, and the conclusion",
+    tools:["MATLAB","fsolve","Kinematic analysis","Velocity analysis"],
+    tags:["mech","soft"],
+    summary:"Turned motor rotation into walking with a Jansen linkage, and walked the full 3 m race course.",
+    brief:"Build a motor-driven robot that walks: no wheels and no pure rotation. Fastest across a roughly 3 m track wins.",
+    did:[
+      "Compared three linkages (Hoekens, Klann and Theo Jansen) with a displacement analysis, a MATLAB animation and a velocity analysis of every link against crank angle.",
+      "Solved the joint positions from the constraint equations in MATLAB with fsolve. I wrote part of that analysis.",
+      "Wrote the design selection. The Jansen linkage won on the longest, nearly horizontal foot path in ground contact, enough clearance in the swing phase, and the most consistent forward speed.",
+      "Four legs, one side in phase and the other out of phase, so at least two feet are on the ground at all times."
+    ],
+    teamNote:"Built by the team: a 3D-printed 108 × 90 mm frame, laser-cut wooden legs so the geometry could change quickly, 3D-printed feet added after testing, and electrical tape for traction.",
+    results:["Walked the full 3 m course with no operational errors","Jansen linkage selected from three candidates"],
+    heroCap:"Our final linkage, solved live in your browser from the joint coordinates and link lengths in our MATLAB model. One crank drives a mirrored pair of legs, and the dashed loops are the paths the feet trace. Drag the slider to turn the crank yourself.",
+    gallery:["robot-photo","robot-anim","robot-vel"], video:"robot-video"
+  },
+  {
+    id:"a380", dwg:"AN-05", art:"ladder",
+    title:"A380 Overhead Access System",
+    full:"Airbus A380 Overhead Access System",
+    context:"AER 222 · course project",
+    dates:"Feb – Apr 2025", team:"4 people",
+    role:"Concept sketches, the CATIA V5 model and drawings, research, feasibility analysis, materials selection, schedule, cost estimate and risk analysis",
+    tools:["CATIA V5","Concept sketching","Materials selection","FAA and OSHA requirements","Engineering drawings","Hand calculations","Cost estimate","Gantt chart"],
+    tags:["aero","mech"],
+    summary:"An automated ladder that rides a track along the A380's cabin ceiling and lowers on demand, so any passenger can reach the overhead bins. Sized for 150 kg.",
+    brief:"Overhead bins on the A380 are hard for many passengers and crew to reach, especially shorter, older or disabled passengers. Design a safe, automated way to reach them that fits the cabin and meets aviation rules.",
+    did:[
+      "Sketched the early concepts: a trolley on a ceiling track with a fold-down ladder, with notes on a pulley drive to cut noise and weight, request buttons at the seats, auto-retract around obstacles, and warning lights.",
+      "Modelled the track, trolleys, frame and ladder in CATIA V5, and made the engineering drawings, including the ladder frame and the wheel mount bracket.",
+      "Researched existing products (crew-rest ladders on long-haul jets, warehouse track ladders, ceiling ladder racks and attic ladders) and the rules a cabin ladder has to meet: FAA 14 CFR 25.561 crash loads of 9 g forward, 3 g lateral and 6 g down, FAR 25.853 flammability, and OSHA step spacing of 25 to 36 cm at 70 to 75 degrees.",
+      "Wrote the innovation, complexity and feasibility analysis, including a 30 to 50 kg mass budget within the A380's structural margins, and the design's limitations.",
+      "Selected the materials: compared five frame materials and chose aluminum 6061-T6, picked Kevlar rope over steel cable and nylon for the hoist, and specified the brackets, links, latches and hinges.",
+      "Ran hand calculations for the loads and the drive, planned the schedule, cost estimate and risk analysis, and wrote the report's introduction and outline."
+    ],
+    teamNoteTitle:"The team",
+    teamNote:"Four-person team. My teammates wrote the conceptual design, abstract and conclusion, and built the presentation.",
+    table:{title:"Frame materials I compared", cols:["Material","Density (g/cc)","Tensile strength","Est. cost per kg"], pick:0, rows:[
+      ["Aluminum 6061-T6","2.7","310 MPa","$7.12 – $14.23"],
+      ["Stainless steel 304","7.8","215 MPa","$4.27 – $7.12"],
+      ["Carbon fiber composite","≈1.5","600 – 1000 MPa","$56.91+"],
+      ["Fiberglass composite","1.9","200 – 300 MPa","$21.34+"],
+      ["Titanium Ti-6Al-4V","4.5","880 MPa","$85.37+"]
+    ], note:"From the materials section I wrote. Costs are rough raw-material estimates. Aluminum won on balance: light, corrosion resistant, common in aircraft interiors and easy to manufacture."},
+    results:["Pulley drive chosen over gears for lower noise, weight and cost","Sized for 150 kg, with an electromagnetic lock, obstruction sensors and anti-slip steps","Ladder envelope of 2.23 m high, 2.65 m long and 1.56 m wide","Aluminum 6061-T6 frame, Kevlar hoist rope and rubber-coated aluminum pulleys"],
+    artCap:"Schematic only: the ladder stows in the ceiling (dashed) and deploys down to the floor.",
+    heroCap:"My CATIA V5 model: trolleys on the ceiling track, the frame, and the ladder lowered. Select any image below to see it full size.",
+    card:"a380-catia", hero:"a380-catia", gallery:["a380-sketch","a380-dwg-frame","a380-dwg-bracket"]
+  },
+  {
+    id:"optimal", dwg:"AN-06", art:"phone",
+    title:"Optimal",
+    context:"All-in-one iOS planner · personal project",
+    dates:"2026 – Present", team:"Solo",
+    role:"Everything: design, code, interface, budget and schedule",
+    tools:["Swift","SwiftUI","Apple Health","Apple Calendar","StoreKit","RevenueCat","TestFlight","Xcode"],
+    tags:["soft"],
+    summary:"An all-in-one iOS planner that keeps your workouts, tasks, deadlines, goals and calendar in one place, and syncs with Apple Health and Apple Calendar so nothing slips. I taught myself Swift and SwiftUI to build it, and it's in public beta on TestFlight.",
+    did:[
+      "Taught myself Swift and SwiftUI and built the app, interface included.",
+      "Connected it to Apple Health and Apple Calendar so workouts and events sync into the same plan as tasks, deadlines and goals.",
+      "Set up three subscription tiers (monthly, annual and lifetime) with StoreKit and RevenueCat.",
+      "Planned the app's budget and schedule like an engineering project.",
+      "Shipped a public beta on TestFlight and changed the app based on tester feedback."
+    ],
+    story:{title:"Debugging the paywall", text:"The paywall kept showing “None of the products could be fetched.” I checked the configuration, the sandbox setup and propagation delays one at a time until I found the cause: the in-app purchases were missing their App Review screenshots. With those added, all three tiers loaded."},
+    results:["Public beta live on TestFlight","Three subscription tiers loading through RevenueCat","Changes made from beta-tester feedback"],
+    links:[{label:"Join the TestFlight beta", href:"https://testflight.apple.com/join/mARz3K3H"}],
+    heroCap:"A workout in progress, the Home screen and the money summary. Select any screen to see it full size.",
+    hero:"optimal-hero", gallery:["optimal-1","optimal-2","optimal-3"], video:"optimal-video"
+  }
+];
+
+/* ================= helpers ================= */
+const $ = (s, r=document) => r.querySelector(s);
+const $$ = (s, r=document) => Array.from(r.querySelectorAll(s));
+const esc = s => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const fmt = s => esc(s).replace(/\[\[(.+?)\]\]/g, '<mark class="fill">$1</mark>');
+const f1 = n => Math.round(n*10)/10;
+const ICON = {
+  camera:'<svg viewBox="0 0 32 32" aria-hidden="true"><path d="M4 10h6l2-3h8l2 3h6v15H4z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="16" cy="17" r="5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>',
+  play:'<svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="13" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M13 10.5l9 5.5-9 5.5z" fill="currentColor"/></svg>',
+  arrow:'<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>',
+  ext:'<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3h8v8M13 3L3 13" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>'
+};
+function arrowHead(x1,y1,x2,y2,size,cls){
+  const a = Math.atan2(y2-y1,x2-x1), s = size||7;
+  const p1 = [x2 - s*Math.cos(a-0.38), y2 - s*Math.sin(a-0.38)];
+  const p2 = [x2 - s*Math.cos(a+0.38), y2 - s*Math.sin(a+0.38)];
+  return `<polygon class="${cls||'a-ink'}" points="${f1(x2)},${f1(y2)} ${f1(p1[0])},${f1(p1[1])} ${f1(p2[0])},${f1(p2[1])}"/>`;
+}
+
+/* ================= schematic art ================= */
+const ART = {
+  monogram(){
+    return `<svg viewBox="0 0 400 500" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+      <line class="a-ctr" x1="200" y1="20" x2="200" y2="480"/><line class="a-ctr" x1="20" y1="250" x2="380" y2="250"/>
+      <circle class="a-thin" cx="200" cy="250" r="150"/>
+      <text class="a-big" x="200" y="300" text-anchor="middle" font-size="150" letter-spacing="-6">AN</text>
+    </svg>`;
+  },
+  rocket(){
+    const fin = (y0,dir) => `M80 ${y0} L128 ${y0} L104 ${y0+dir*36} L72 ${y0+dir*36} Z`;
+    return `<svg viewBox="0 0 400 250" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+      <line class="a-ctr" x1="40" y1="125" x2="394" y2="125"/>
+      <path class="a-fill" d="${fin(109,-1)}"/><path class="a-fill" d="${fin(141,1)}"/>
+      <rect class="a-paper" x="62" y="117" width="10" height="16"/>
+      <rect class="a-fill" x="72" y="109" width="230" height="32"/>
+      <path class="a-paper" d="M302 109 C340 109 366 116 384 125 C366 134 340 141 302 141 Z"/>
+      <line class="a-dim" x1="196" y1="109" x2="196" y2="141"/><line class="a-dim" x1="252" y1="109" x2="252" y2="141"/>
+      <rect class="a-ln" x="232" y="105" width="12" height="4"/>
+      <line class="a-ctr" x1="40" y1="125" x2="394" y2="125"/>
+      <circle class="a-rbf" cx="168" cy="125" r="8"/><circle class="a-rbff" cx="168" cy="125" r="3"/>
+      <circle class="a-paper" cx="214" cy="125" r="8"/>
+      <path class="a-ink" d="M214 125 L222 125 A8 8 0 0 1 214 133 Z"/><path class="a-ink" d="M214 125 L206 125 A8 8 0 0 1 214 117 Z"/>
+      <line class="a-thin" x1="168" y1="96" x2="168" y2="115"/><line class="a-thin" x1="214" y1="96" x2="214" y2="115"/>
+      <text class="a-txt" x="168" y="90" text-anchor="middle">CP</text><text class="a-txt" x="214" y="90" text-anchor="middle">CG</text>
+      <line class="a-thin" x1="168" y1="134" x2="168" y2="176"/><line class="a-thin" x1="214" y1="134" x2="214" y2="176"/>
+      <line class="a-thin" x1="171" y1="170" x2="211" y2="170"/>
+      ${arrowHead(190,170,170,170,6)}${arrowHead(190,170,212,170,6)}
+      <text class="a-txt" x="191" y="190" text-anchor="middle">STABILITY MARGIN</text>
+      <text class="a-txt" x="343" y="160" text-anchor="middle">NOSE CONE</text>
+      <text class="a-txt" x="98" y="212" text-anchor="middle">FINS</text>
+    </svg>`;
+  },
+  gears(){
+    const gearPath = (N, m, offset) => {
+      const p = 2*Math.PI/N, rr = (N/2-1.25)*m, rt = (N/2+1)*m;
+      const P = (r,a) => `${f1(r*Math.cos(a))} ${f1(r*Math.sin(a))}`;
+      let d = `M${P(rr, offset + 0.18*p)}`;
+      for (let i=0;i<N;i++){
+        const a = offset + i*p;
+        d += ` L${P(rt, a+0.32*p)} A${rt} ${rt} 0 0 1 ${P(rt, a+0.68*p)} L${P(rr, a+0.82*p)} A${rr} ${rr} 0 0 1 ${P(rr, a+1.18*p)}`;
+      }
+      return d + " Z";
+    };
+    const m = 4, p1 = 2*Math.PI/50;
+    const g1 = gearPath(50, m, -0.5*p1), g2 = gearPath(14, m, Math.PI);
+    let holes = "";
+    for (let k=0;k<5;k++){
+      const a1 = (k*72+11)*Math.PI/180, a2 = (k*72+61)*Math.PI/180, ro=78, ri=26;
+      holes += `<path class="a-paper" d="M${f1(ro*Math.cos(a1))} ${f1(ro*Math.sin(a1))} A${ro} ${ro} 0 0 1 ${f1(ro*Math.cos(a2))} ${f1(ro*Math.sin(a2))} L${f1(ri*Math.cos(a2))} ${f1(ri*Math.sin(a2))} A${ri} ${ri} 0 0 0 ${f1(ri*Math.cos(a1))} ${f1(ri*Math.sin(a1))} Z"/>`;
+    }
+    return `<svg viewBox="0 0 400 250" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+      <line class="a-ctr" x1="20" y1="125" x2="330" y2="125"/>
+      <g transform="translate(142 125)"><g data-g="1">
+        <path class="a-fill" d="${g1}"/>${holes}
+        <circle class="a-paper" cx="0" cy="0" r="9"/>
+        <circle class="a-dim" cx="0" cy="0" r="100"/>
+      </g></g>
+      <g transform="translate(270 125)"><g data-g="2">
+        <path class="a-fill" d="${g2}"/>
+        <circle class="a-paper" cx="0" cy="0" r="7"/><rect class="a-paper" x="-2.5" y="-10" width="5" height="5"/>
+        <circle class="a-dim" cx="0" cy="0" r="28"/>
+      </g></g>
+      <line class="a-ctr" x1="142" y1="10" x2="142" y2="240"/><line class="a-ctr" x1="270" y1="80" x2="270" y2="170"/>
+      <text class="a-txt" x="142" y="246" text-anchor="middle">50T · SPOKED</text>
+      <text class="a-txt" x="270" y="190" text-anchor="middle">14T</text>
+      <text class="a-txt-acc" x="384" y="40" text-anchor="end">50 : 14</text>
+      <text class="a-txt" x="384" y="56" text-anchor="end">TO SCALE</text>
+    </svg>`;
+  },
+  axes(){
+    const cgx=205, cgy=125;
+    return `<svg viewBox="0 0 400 250" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+      <path class="a-fill" d="M226 115 L194 30 L176 30 L186 115 Z"/><path class="a-fill" d="M226 135 L194 220 L176 220 L186 135 Z"/>
+      <path class="a-fill" d="M118 116 L104 82 L95 82 L100 116 Z"/><path class="a-fill" d="M118 134 L104 168 L95 168 L100 134 Z"/>
+      <path class="a-paper" d="M88 125 C88 118 98 115 116 115 L298 115 C320 115 336 120 346 125 C336 130 320 135 298 135 L116 135 C98 135 88 132 88 125 Z"/>
+      <line class="a-acc" x1="${cgx}" y1="${cgy}" x2="382" y2="${cgy}"/>${arrowHead(cgx,cgy,384,cgy,9,'a-accf')}
+      <line class="a-acc" x1="${cgx}" y1="${cgy}" x2="${cgx}" y2="236"/>${arrowHead(cgx,cgy,cgx,238,9,'a-accf')}
+      <circle class="a-paper" cx="${cgx}" cy="${cgy}" r="9"/>
+      <line class="a-ln" x1="${cgx-6}" y1="${cgy-6}" x2="${cgx+6}" y2="${cgy+6}"/><line class="a-ln" x1="${cgx+6}" y1="${cgy-6}" x2="${cgx-6}" y2="${cgy+6}"/>
+      <path class="a-acc" d="M372 108 A12 18 0 0 1 372 142" />${arrowHead(372,130,371,142,7,'a-accf')}
+      <text class="a-txt-acc" x="384" y="102" text-anchor="end">x · ROLL p</text>
+      <text class="a-txt-acc" x="215" y="232">y · PITCH q</text>
+      <text class="a-txt-acc" x="252" y="152">z · YAW r</text>
+      <line class="a-thin" x1="214" y1="131" x2="250" y2="148"/>
+      <text class="a-txt" x="24" y="30">6-DOF · BODY AXES</text>
+      <text class="a-txt" x="24" y="44">TOP VIEW</text>
+    </svg>`;
+  },
+  ladder(){
+    const hx=88, hy=52, fx=212, fy=226;
+    const dx=fx-hx, dy=fy-hy, L=Math.hypot(dx,dy), ux=dx/L, uy=dy/L, nx=-uy, ny=ux, w=8;
+    let rails = `<line class="a-ln" x1="${f1(hx+nx*w)}" y1="${f1(hy+ny*w)}" x2="${f1(fx+nx*w)}" y2="${f1(fy+ny*w)}"/>
+                 <line class="a-ln" x1="${f1(hx-nx*w)}" y1="${f1(hy-ny*w)}" x2="${f1(fx-nx*w)}" y2="${f1(fy-ny*w)}"/>`;
+    let rungs = "";
+    for (let s=22; s<L-6; s+=22){
+      const cx=hx+ux*s, cy=hy+uy*s;
+      rungs += `<line class="a-ln" x1="${f1(cx+nx*w)}" y1="${f1(cy+ny*w)}" x2="${f1(cx-nx*w)}" y2="${f1(cy-ny*w)}"/>`;
+    }
+    const ls = 22*4, lx = hx+ux*ls, ly = hy+uy*ls;
+    let hatch = "";
+    for (let x=20;x<=380;x+=12){ hatch += `<line class="a-thin" x1="${x}" y1="${hy}" x2="${x+8}" y2="${hy-8}"/>`; }
+    let fh = "";
+    for (let x=20;x<=380;x+=12){ fh += `<line class="a-thin" x1="${x}" y1="${fy+8}" x2="${x+8}" y2="${fy}"/>`; }
+    let stowRungs = "";
+    for (let x=104;x<=226;x+=20){ stowRungs += `<line class="a-dim" x1="${x}" y1="${hy-14}" x2="${x}" y2="${hy-4}"/>`; }
+    return `<svg viewBox="0 0 400 250" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+      ${hatch}${fh}
+      <line class="a-ln" x1="20" y1="${hy}" x2="384" y2="${hy}"/>
+      <line class="a-ln" x1="20" y1="${fy}" x2="384" y2="${fy}"/>
+      <rect class="a-fill" x="262" y="${hy}" width="118" height="58"/>
+      <line class="a-thin" x1="262" y1="${hy+44}" x2="380" y2="${hy+44}"/>
+      <text class="a-txt" x="321" y="${hy+30}" text-anchor="middle">OVERHEAD BIN</text>
+      <line class="a-dim" x1="${hx}" y1="${hy-14}" x2="232" y2="${hy-14}"/><line class="a-dim" x1="${hx}" y1="${hy-4}" x2="232" y2="${hy-4}"/>${stowRungs}
+      <text class="a-txt" x="160" y="${hy-22}" text-anchor="middle">STOWED</text>
+      <rect class="a-paper" x="232" y="${hy-16}" width="12" height="12"/>
+      <text class="a-txt" x="238" y="${hy-22}" text-anchor="middle">LOCK</text>
+      ${rails}${rungs}
+      <circle class="a-paper" cx="${hx}" cy="${hy}" r="6"/>
+      <path class="a-acc" d="M228 ${hy+10} Q 262 ${hy+86} ${fx+22} ${fy-40}" stroke-dasharray="5 4"/>${arrowHead(250,150,fx+22,fy-40,8,'a-accf')}
+      <text class="a-txt-acc" x="252" y="${hy+80}">DEPLOY</text>
+      <line class="a-ln" x1="${f1(lx-38)}" y1="${f1(ly-40)}" x2="${f1(lx-6)}" y2="${f1(ly-6)}"/>${arrowHead(lx-38,ly-40,lx-5,ly-5,8)}
+      <text class="a-txt" x="${f1(lx-42)}" y="${f1(ly-44)}" text-anchor="end">150 kg</text>
+      <text class="a-txt" x="24" y="${fy+20}">CABIN FLOOR</text>
+    </svg>`;
+  },
+  phone(){
+    const tier = (y,label,on) => `<rect x="168" y="${y}" width="64" height="22" rx="5" class="${on?'a-accf':'a-paper'}"/>
+      <text class="a-txt" x="200" y="${y+14.5}" text-anchor="middle" style="${on?'fill:var(--accent-ink)':''}">${label}</text>`;
+    return `<svg viewBox="0 0 400 250" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+      <rect class="a-paper a-faint" x="236" y="26" width="92" height="196" rx="16" transform="rotate(8 282 124)"/>
+            <rect class="a-paper" x="150" y="12" width="100" height="226" rx="18"/>
+      <rect class="a-ln" x="158" y="20" width="84" height="210" rx="12"/>
+      <rect class="a-ink" x="185" y="25" width="30" height="8" rx="4"/>
+      <rect class="a-fill" x="168" y="46" width="64" height="40" rx="6"/>
+      <line class="a-thin" x1="168" y1="96" x2="216" y2="96"/><line class="a-thin" x1="168" y1="104" x2="204" y2="104"/>
+      ${tier(118,"MONTHLY",false)}${tier(146,"ANNUAL",true)}${tier(174,"LIFETIME",false)}
+      <rect class="a-ln" x="168" y="206" width="64" height="14" rx="7"/>
+      <text class="a-txt" x="24" y="30">SWIFTUI · STOREKIT</text>
+      <text class="a-txt" x="24" y="44">3 TIERS</text>
+    </svg>`;
+  },
+  linkage(){
+    const b = LK.bounds, m = 36, ns = 'vector-effect="non-scaling-stroke"';
+    const vb = `${f1(b.minX-m)} ${f1(-b.maxY-m)} ${f1(b.maxX-b.minX+2*m)} ${f1(b.maxY-b.minY+2*m)}`;
+    const trace = key => LK.F.map((f,i) => (i?"L":"M")+f1(f[key][0])+" "+f1(-f[key][1])).join(" ")+" Z";
+    const f0 = LK.F[0];
+    return `<svg viewBox="${vb}" preserveAspectRatio="xMidYMid meet" aria-hidden="true" data-linkage>
+      <line class="a-dim" ${ns} x1="${f1(b.minX-m)}" y1="${f1(-b.footMinY)}" x2="${f1(b.maxX+m)}" y2="${f1(-b.footMinY)}"/>
+      <path class="a-trace" ${ns} d="${trace("P6")}"/><path class="a-trace" ${ns} d="${trace("P15")}"/>
+      ${LK_TRIS.map((t,i)=>`<polygon class="a-fill" ${ns} data-t="${i}"/>`).join("")}
+      ${LK_LINES.map((l,i)=>`<line class="a-ln lk-w" ${ns} data-k="${i}"/>`).join("")}
+      <line class="a-acc lk-w" ${ns} data-crank=""/>
+      ${["P0","P2","P11"].map(k=>`<rect class="a-ink" x="${f1(f0[k][0]-8)}" y="${f1(-f0[k][1]-8)}" width="16" height="16" rx="2"/>`).join("")}
+      ${LK_JOINTS.map(k=>`<circle class="a-joint" ${ns} r="7" data-j="${k}"/>`).join("")}
+      <circle class="a-accf" r="10" data-j="P6"/><circle class="a-accf" r="10" data-j="P15"/>
+    </svg>`;
+  }
+};
+
+function circ(p0,r0,p1,r1){
+  const dx=p1[0]-p0[0], dy=p1[1]-p0[1], d=Math.hypot(dx,dy);
+  const a=(r0*r0-r1*r1+d*d)/(2*d), h=Math.sqrt(Math.max(r0*r0-a*a,0));
+  const xm=p0[0]+a*dx/d, ym=p0[1]+a*dy/d;
+  return [[xm+h*dy/d, ym-h*dx/d],[xm-h*dy/d, ym+h*dx/d]];
+}
+
+/* Walking robot final design: ported from the team's MATLAB model (joint coordinates in mm,
+   input crank at -30 rpm). Each joint is solved as a circle intersection, keeping the branch
+   nearest the previous frame, which reproduces the fsolve continuation in the MATLAB code. */
+const LK_TRIS  = [["P2","P3","P5"],["P6","P7","P4"],["P11","P12","P14"],["P15","P16","P13"]];
+const LK_LINES = [["P1","P3"],["P4","P5"],["P2","P7"],["P1","P7"],["P12","P1"],["P13","P14"],["P11","P16"],["P16","P1"]];
+const LK_JOINTS = ["P1","P3","P4","P5","P7","P12","P13","P14","P16"];
+const LK = (() => {
+  const P0=[383.527559,-110.966929], P1i=[384.362856,-173.326153], P2=[196.240630,-137.990551],
+        P3i=[257.973604,-14.912435], P4i=[61.644662,-194.821927], P5i=[73.783885,-55.723536],
+        P6i=[70.527998,-449.021690], P7i=[186.195990,-274.763099], P11=[569.767467,-137.990040],
+        P12i=[510.319800,-13.792613], P13i=[708.955008,-196.795448], P14i=[693.723624,-58.001615],
+        P15i=[695.519686,-450.795301], P16i=[582.991699,-274.492741];
+  const d = (a,b) => Math.hypot(a[0]-b[0], a[1]-b[1]);
+  const near = (p0,r0,p1,r1,prev) => { const c = circ(p0,r0,p1,r1); return d(c[0],prev) <= d(c[1],prev) ? c[0] : c[1]; };
+  const L01=d(P1i,P0), L23=d(P3i,P2), L25=d(P5i,P2), L35=d(P5i,P3i), L13=d(P3i,P1i), L45=d(P4i,P5i),
+        L67=d(P7i,P6i), L47=d(P4i,P7i), L46=d(P4i,P6i), L27=d(P7i,P2), L17=d(P7i,P1i),
+        L1112=d(P12i,P11), L1114=d(P14i,P11), L1214=d(P14i,P12i), L112=d(P12i,P1i), L1314=d(P13i,P14i),
+        L1516=d(P16i,P15i), L1316=d(P13i,P16i), L1315=d(P13i,P15i), L1116=d(P16i,P11), L116=d(P16i,P1i);
+  const th0 = Math.atan2(P1i[1]-P0[1], P1i[0]-P0[0]);
+  const N = 720, F = [];
+  let p = {P3:P3i,P4:P4i,P5:P5i,P6:P6i,P7:P7i,P12:P12i,P13:P13i,P14:P14i,P15:P15i,P16:P16i};
+  for (let k = 0; k < N; k++){
+    const th = th0 - 2*Math.PI*k/N;
+    const P1 = [P0[0]+L01*Math.cos(th), P0[1]+L01*Math.sin(th)];
+    const P3 = near(P2,L23,P1,L13,p.P3), P5 = near(P2,L25,P3,L35,p.P5), P7 = near(P2,L27,P1,L17,p.P7);
+    const P4 = near(P5,L45,P7,L47,p.P4), P6 = near(P7,L67,P4,L46,p.P6);
+    const P12 = near(P11,L1112,P1,L112,p.P12), P14 = near(P11,L1114,P12,L1214,p.P14), P16 = near(P11,L1116,P1,L116,p.P16);
+    const P13 = near(P14,L1314,P16,L1316,p.P13), P15 = near(P16,L1516,P13,L1315,p.P15);
+    p = {P3,P4,P5,P6,P7,P12,P13,P14,P15,P16};
+    F.push(Object.assign({P0,P1,P2,P11}, p));
+  }
+  let minX=Infinity, maxX=-Infinity, minY=Infinity, maxY=-Infinity, footMinY=Infinity;
+  F.forEach(f => { Object.values(f).forEach(q => { minX=Math.min(minX,q[0]); maxX=Math.max(maxX,q[0]); minY=Math.min(minY,q[1]); maxY=Math.max(maxY,q[1]); }); footMinY=Math.min(footMinY,f.P6[1],f.P15[1]); });
+  return {N, F, bounds:{minX,maxX,minY,maxY,footMinY}};
+})();
+
+/* ================= animation loop ================= */
+const reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const anims = new Set();
+let rafOn = false, t0 = performance.now();
+function loop(now){
+  const t = (now - t0)/1000;
+  let any = false;
+  anims.forEach(a => { if (!a.el.isConnected){ anims.delete(a); return; } if (a.vis){ a.step(t); any = true; } });
+  if (anims.size) requestAnimationFrame(loop); else rafOn = false;
+}
+const io = ("IntersectionObserver" in window) ? new IntersectionObserver(es => es.forEach(e => { const a = e.target.__anim; if (a) a.vis = e.isIntersecting; }), {rootMargin:"60px"}) : null;
+function register(el, step){
+  const a = {el, step, vis: !io};
+  el.__anim = a; step(1.2);
+  if (reduceMotion) return;
+  anims.add(a); if (io) io.observe(el);
+  if (!rafOn){ rafOn = true; requestAnimationFrame(loop); }
+}
+function initArt(root){
+  $$('svg[data-linkage]', root).forEach(svg => {
+    const tris = $$('[data-t]', svg), lines = $$('[data-k]', svg), crank = svg.querySelector('[data-crank]'), joints = $$('[data-j]', svg);
+    const draw = idx => {
+      const f = LK.F[idx];
+      tris.forEach((el,i) => el.setAttribute("points", LK_TRIS[i].map(k => f1(f[k][0])+","+f1(-f[k][1])).join(" ")));
+      lines.forEach((el,i) => { const a = f[LK_LINES[i][0]], b = f[LK_LINES[i][1]]; el.setAttribute("x1",f1(a[0])); el.setAttribute("y1",f1(-a[1])); el.setAttribute("x2",f1(b[0])); el.setAttribute("y2",f1(-b[1])); });
+      crank.setAttribute("x1",f1(f.P0[0])); crank.setAttribute("y1",f1(-f.P0[1])); crank.setAttribute("x2",f1(f.P1[0])); crank.setAttribute("y2",f1(-f.P1[1]));
+      joints.forEach(el => { const q = f[el.dataset.j]; el.setAttribute("cx",f1(q[0])); el.setAttribute("cy",f1(-q[1])); });
+    };
+    const sim = {playing: !reduceMotion, ang: 0, last: null, onTick: null};
+    sim.render = () => draw(Math.round(sim.ang/360*LK.N) % LK.N);
+    svg.__sim = sim;
+    register(svg, t => {
+      if (sim.last === null) sim.last = t;
+      const dt = Math.min(0.1, Math.max(0, t - sim.last)); sim.last = t;
+      if (sim.playing) sim.ang = (sim.ang + dt*180) % 360;   // 30 rpm = 180 degrees per second
+      sim.render();
+      if (sim.onTick) sim.onTick(sim.ang);
+    });
+  });
+  $$('[data-g="1"]', root).forEach(g1 => {
+    const svg = g1.ownerSVGElement, g2 = svg.querySelector('[data-g="2"]');
+    register(svg, t => { const a = t*7; g1.setAttribute("transform", `rotate(${f1(a)})`); g2.setAttribute("transform", `rotate(${(-a*50/14).toFixed(2)})`); });
+  });
+}
+
+
+/* ================= media rendering ================= */
+function media(key, opts){
+  opts = opts || {};
+  const m = MEDIA[key] || {label:key};
+  const ratio = opts.ratio || "r-16-10";
+  const isVid = m.type === "video";
+  if (m.src){
+    const cls = isVid ? `media vid${m.wide ? " wide" : ""}` : `media ${ratio === "natural" ? "nat" : ratio}${m.fit === "contain" ? " fit" : ""}${(!isVid && m.fit !== "contain" && !opts.cover && ratio !== "natural") ? " ctr" : ""}`;
+    if (isVid) return `<div class="${cls}"><video src="${esc(m.src)}" controls playsinline preload="none"${m.poster?` poster="${esc(m.poster)}"`:""} aria-label="${esc(m.label)}"></video></div>`;
+    // Photos show whole and centred, over a blurred copy of themselves that fills the frame.
+    // Drawings/plots ("contain") sit on white; the headshot (opts.cover) keeps its crop.
+    const centred = !isVid && m.fit !== "contain" && !opts.cover && ratio !== "natural";
+    const img = centred
+      ? `<img class="bd" src="${esc(m.src)}" alt="" aria-hidden="true" loading="lazy" decoding="async"><img class="fg" src="${esc(m.src)}" alt="${esc(m.alt||m.label)}" loading="lazy" decoding="async">`
+      : `<img src="${esc(m.src)}" alt="${esc(m.alt||m.label)}" loading="lazy" decoding="async"${m.pos?` style="object-position:${esc(m.pos)}"`:""}>`;
+    const set = (opts.set||[]).filter(k => MEDIA[k] && MEDIA[k].src && MEDIA[k].type !== "video");
+    const setAttr = set.length > 1 ? ` data-set="${esc(set.join(","))}"` : "";
+    const badge = opts.badge && set.length > 1 ? `<span class="set-tag">${ICON.camera}${set.length} photos</span>` : "";
+    return opts.zoom ? `<button type="button" class="${cls} zoom" data-zoom="${esc(key)}"${setAttr} aria-label="View larger: ${esc(m.label)}${set.length>1?` (${set.length} photos)`:""}">${img}${badge}</button>` : `<div class="${cls}">${img}</div>`;
+  }
+  const artFn = opts.art && ART[opts.art];
+  const word = isVid ? "Add video" : "Add photo";
+  const inner = artFn
+    ? `<div class="art">${artFn()}</div><span class="ph-tag">${word}: ${esc(m.label)}</span>`
+    : `<div class="ph-empty">${isVid?ICON.play:ICON.camera}<span class="ph-label">${esc(m.label)}</span></div><span class="ph-tag">${word}</span>`;
+  return `<div class="media ph ${ratio}">${inner}</div>`;
+}
+function figure(kind, ratio, chip){
+  return `<div class="media fig ${ratio||"r-16-10"}"><div class="art">${ART[kind]()}</div>${chip?`<span class="fig-chip">${esc(chip)}</span>`:""}</div>`;
+}
+const CHECK = '<svg viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="8" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M5.5 9.2l2.3 2.3 4.7-4.9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+
+/* portrait + simple slots */
+$("#portrait-slot").innerHTML = media("portrait", {ratio:"r-4-5", cover:true});
+$$("[data-slot]").forEach(el => {
+  const set = el.dataset.set ? el.dataset.set.split(",") : [el.dataset.slot];
+  el.outerHTML = media(el.dataset.slot, {ratio: el.dataset.ratio || "r-16-9", zoom:true, set, badge:true});
+});
+
+/* ================= project cards + filters ================= */
+const list = $("#project-list");
+list.innerHTML = PROJECTS.map(p => `
+  <a class="card" href="#project-${p.id}" data-open="${p.id}" data-tags="${p.tags.join(" ")}">
+    <div class="card-media">${p.fig ? figure(p.fig, "r-fill", "Live model") : media(p.card || p.hero, {art:p.art, ratio:"r-fill"})}</div>
+    <div class="card-body">
+      <p class="meta">${esc(p.context)}${p.team?` · ${esc(p.team)}`:""} · ${esc(p.dates)}</p>
+      <h3>${esc(p.title)}</h3>
+      <p class="sum">${fmt(p.summary)}</p>
+      <p class="result">${CHECK}<span>${esc(p.results[0])}</span></p>
+      <ul class="tags">${p.tools.slice(0,4).map(t=>`<li>${esc(t)}</li>`).join("")}</ul>
+      <span class="more">Read the case study ${ICON.arrow}</span>
+    </div>
+  </a>`).join("");
+initArt(list);
+
+const filtersEl = $("#filters");
+filtersEl.innerHTML = FILTERS.map((f,i) => {
+  const n = f.id==="all" ? PROJECTS.length : PROJECTS.filter(p=>p.tags.includes(f.id)).length;
+  return `<li><button type="button" class="chip" data-filter="${f.id}" aria-pressed="${i===0}">${esc(f.label)}<span class="n">${n}</span></button></li>`;
+}).join("");
+filtersEl.addEventListener("click", e => {
+  const b = e.target.closest("[data-filter]"); if (!b) return;
+  const id = b.dataset.filter;
+  $$(".chip", filtersEl).forEach(c => c.setAttribute("aria-pressed", String(c===b)));
+  $$(".card", list).forEach(c => { c.hidden = !(id==="all" || c.dataset.tags.split(" ").includes(id)); });
+});
+
+/* ================= case study sheet ================= */
+const overlay = $("#overlay"), cs = $("#cs");
+let current = -1, lastFocus = null;
+function setHash(h){ try { history.replaceState(null, "", h); } catch(e){} }
+function renderSheet(i){
+  const p = PROJECTS[i], n = PROJECTS.length;
+  const prev = PROJECTS[(i-1+n)%n], next = PROJECTS[(i+1)%n];
+  const rows = [["Context", p.ctxFull || p.context],["Dates",p.dates],["Team",p.team],["My part",p.role],["Tools",p.tools.join(", ")]].filter(r=>r[1]);
+  const viewSet = [p.hero, ...(p.gallery||[])].filter(k => k && MEDIA[k] && MEDIA[k].src);
+  const gal = (p.gallery||[]).map(k => `<figure>${media(k,{ratio:"r-3-2", zoom:true, set:viewSet})}<figcaption>${esc(MEDIA[k].label)}</figcaption></figure>`).join("");
+  const heroHasSrc = !!(p.hero && MEDIA[p.hero] && MEDIA[p.hero].src);
+  const heroHTML = p.fig
+    ? figure(p.fig, "r-16-10", "Live model") + `<div class="sim-ctl">
+        <button type="button" class="icon-btn" data-sim-toggle${reduceMotion?" hidden":""}>Pause</button>
+        <label for="crank-angle">Crank angle</label>
+        <input type="range" id="crank-angle" min="0" max="359" step="1" value="0">
+        <output for="crank-angle" data-sim-out>0°</output>
+        <span class="sim-note">Model speed 30 rpm</span>
+      </div>`
+    : media(p.hero, heroHasSrc ? {ratio:"natural", zoom:true, set:viewSet} : {ratio:"r-16-9", art:p.art});
+  const heroCap = (p.fig || heroHasSrc) ? p.heroCap : p.artCap;
+  cs.innerHTML = `
+    <div class="cs-bar">
+      <span class="ids">${esc(p.title)}</span>
+      <span class="btns">
+        <button type="button" class="icon-btn" data-nav="-1" aria-label="Previous project">←</button>
+        <button type="button" class="icon-btn" data-nav="1" aria-label="Next project">→</button>
+        <button type="button" class="icon-btn" data-close>Close ✕</button>
+      </span>
+    </div>
+    <div class="cs-inner">
+      <header class="cs-head">
+        <p class="eyebrow">${esc(p.context)} · ${esc(p.dates)}</p>
+        <h2 id="cs-title">${esc(p.full || p.title)}</h2>
+        <p class="sum">${fmt(p.summary)}</p>
+      </header>
+      <div class="cs-hero">${heroHTML}${heroCap ? `<p class="art-cap">${esc(heroCap)}</p>`:""}</div>
+      <div class="cs-cols">
+        <div class="cs-main">
+          ${p.brief ? `<h3 class="lbl">The brief</h3><p>${esc(p.brief)}</p>` : ""}
+          <h3 class="lbl">What I did</h3>
+          <ul>${p.did.map(d=>`<li>${esc(d)}</li>`).join("")}</ul>
+          ${p.teamNote ? `<div class="teamnote"><b>${esc(p.teamNoteTitle || "Team build")}</b>${esc(p.teamNote)}</div>` : ""}
+          ${p.story ? `<div class="story"><b>${esc(p.story.title)}</b><p>${esc(p.story.text)}</p></div>` : ""}
+          ${p.code ? `<h3 class="lbl">${esc(p.code.title)}</h3><pre class="code" tabindex="0"><code>${esc(p.code.text)}</code></pre>` : ""}
+          ${p.table ? `<h3 class="lbl">${esc(p.table.title)}</h3><div class="tbl-scroll" tabindex="0"><table class="mtable"><thead><tr>${p.table.cols.map(c=>`<th scope="col">${esc(c)}</th>`).join("")}</tr></thead><tbody>${p.table.rows.map((r,j)=>`<tr${j===p.table.pick?' class="pick"':""}>${r.map((c,k)=>k===0?`<th scope="row">${esc(c)}${j===p.table.pick?' <span class="pick-tag">Selected</span>':""}</th>`:`<td>${esc(c)}</td>`).join("")}</tr>`).join("")}</tbody></table></div>${p.table.note?`<p class="art-cap">${esc(p.table.note)}</p>`:""}` : ""}
+        </div>
+        <aside>
+          <dl class="details">${rows.map(r=>`<div><dt>${r[0]}</dt><dd>${esc(r[1])}</dd></div>`).join("")}</dl>
+          <h3 class="lbl">Results</h3>
+          <ol class="results">${p.results.map((r,j)=>`<li><span class="b">${j+1}</span><span>${esc(r)}</span></li>`).join("")}</ol>
+          ${p.links ? `<h3 class="lbl">Links</h3><div class="cs-links">${p.links.map(l=>`<a class="btn primary" href="${esc(l.href)}" target="_blank" rel="noopener">${esc(l.label)} ${ICON.ext}</a>`).join("")}</div>` : ""}
+        </aside>
+      </div>
+      ${gal ? `<h3 class="lbl">Gallery</h3><div class="gallery">${gal}</div>` : ""}
+      ${p.video ? `<h3 class="lbl">Video</h3>${media(p.video,{ratio:"r-16-9"})}${MEDIA[p.video].src?`<p class="art-cap">${esc(MEDIA[p.video].label)}</p>`:""}` : ""}
+      <div class="cs-foot">
+        <button type="button" data-nav="-1"><span>Previous</span>← ${esc(prev.title)}</button>
+        <button type="button" class="next" data-nav="1"><span>Next</span>${esc(next.title)} →</button>
+      </div>
+    </div>`;
+  initArt(cs);
+  const svg = cs.querySelector(".cs-hero svg[data-linkage]");
+  if (svg && svg.__sim){
+    const sim = svg.__sim, range = cs.querySelector("#crank-angle"), out = cs.querySelector("[data-sim-out]"), tog = cs.querySelector("[data-sim-toggle]");
+    const show = a => { const v = Math.floor(a) % 360; range.value = v; out.textContent = v + "°"; };
+    sim.onTick = show;
+    range.addEventListener("input", () => { sim.playing = false; tog.textContent = "Play"; sim.ang = Number(range.value); sim.render(); out.textContent = range.value + "°"; });
+    tog.addEventListener("click", () => { sim.playing = !sim.playing; sim.last = null; tog.textContent = sim.playing ? "Pause" : "Play"; });
+  }
+}
+function openSheet(id){
+  const i = PROJECTS.findIndex(p => p.id === id); if (i < 0) return;
+  if (current < 0) lastFocus = document.activeElement;
+  current = i; renderSheet(i);
+  overlay.hidden = false; overlay.scrollTop = 0; document.body.classList.add("locked");
+  setHash("#project-" + id);
+  const c = cs.querySelector("[data-close]"); if (c) c.focus({preventScroll:true});
+}
+function closeSheet(){
+  overlay.hidden = true; document.body.classList.remove("locked"); cs.innerHTML = ""; current = -1;
+  setHash("#projects");
+  if (lastFocus && lastFocus.focus) lastFocus.focus({preventScroll:true});
+}
+document.addEventListener("click", e => {
+  const o = e.target.closest("[data-open]");
+  if (o){ e.preventDefault(); openSheet(o.dataset.open); return; }
+  if (e.target.closest("[data-close]")){ closeSheet(); return; }
+  const nv = e.target.closest("[data-nav]");
+  if (nv && current >= 0){ const n = PROJECTS.length; openSheet(PROJECTS[(current + Number(nv.dataset.nav) + n) % n].id); return; }
+  const s = e.target.closest("[data-scroll]");
+  if (s){
+    const t = document.getElementById(s.dataset.scroll);
+    if (t){ e.preventDefault(); t.scrollIntoView({behavior: reduceMotion ? "auto" : "smooth", block:"start"}); setHash("#"+s.dataset.scroll); }
+  }
+});
+overlay.addEventListener("click", e => { if (e.target === overlay) closeSheet(); });
+const lb = $("#lightbox"), lbImg = $("#lb-img"), lbCap = $("#lb-cap"), lbNav = $(".lb-nav", lb), lbCount = $("#lb-count");
+let lbReturn = null, lbSet = [], lbIdx = 0;
+function showLightbox(i){
+  lbIdx = (i + lbSet.length) % lbSet.length;
+  const m = MEDIA[lbSet[lbIdx]];
+  lbImg.src = m.src; lbImg.alt = m.alt || m.label; lbCap.textContent = m.label;
+  lbNav.hidden = lbSet.length < 2;
+  lbCount.textContent = `${lbIdx + 1} / ${lbSet.length}`;
+}
+function openLightbox(key, set){
+  const m = MEDIA[key]; if (!m || !m.src) return;
+  lbReturn = document.activeElement;
+  lbSet = (set && set.includes(key)) ? set : [key];
+  showLightbox(lbSet.indexOf(key));
+  lb.hidden = false; lb.querySelector("[data-lb-close]").focus({preventScroll:true});
+}
+function closeLightbox(){ lb.hidden = true; lb.classList.remove("doc"); lbImg.removeAttribute("src"); if (lbReturn && lbReturn.focus) lbReturn.focus({preventScroll:true}); }
+document.addEventListener("click", e => {
+  const z = e.target.closest("[data-zoom]"); if (z){ e.preventDefault(); openLightbox(z.dataset.zoom, z.dataset.set ? z.dataset.set.split(",") : null); return; }
+  const st = e.target.closest("[data-lb-step]"); if (st){ showLightbox(lbIdx + Number(st.dataset.lbStep)); return; }
+  if (e.target.closest("[data-lb-close]") || e.target === lb){ closeLightbox(); }
+});
+document.addEventListener("keydown", e => {
+  if (!lb.hidden){
+    if (e.key === "Escape"){ e.preventDefault(); closeLightbox(); }
+    else if (lbSet.length > 1 && (e.key === "ArrowRight" || e.key === "ArrowLeft")){ e.preventDefault(); showLightbox(lbIdx + (e.key === "ArrowRight" ? 1 : -1)); }
+    else if (e.key === "Tab"){
+      e.preventDefault();
+      const f = $$("button", lb).filter(b => !b.closest("[hidden]"));
+      const i = f.indexOf(document.activeElement);
+      f[(i + (e.shiftKey ? -1 : 1) + f.length) % f.length].focus();
+    }
+    return;
+  }
+  if (current < 0) return;
+  if (e.key === "Escape") closeSheet();
+  if (e.key === "Tab"){
+    const f = $$('button, a[href], video', cs).filter(x => !x.hidden);
+    if (!f.length) return;
+    if (e.shiftKey && document.activeElement === f[0]){ e.preventDefault(); f[f.length-1].focus(); }
+    else if (!e.shiftKey && document.activeElement === f[f.length-1]){ e.preventDefault(); f[0].focus(); }
+  }
+});
+const h = (location.hash || "").replace("#","");
+if (h.startsWith("project-")) openSheet(h.slice(8));
+
+/* ================= header + active nav ================= */
+const topbar = $("#topbar");
+const onScroll = () => topbar.classList.toggle("scrolled", window.scrollY > 8);
+window.addEventListener("scroll", onScroll, {passive:true}); onScroll();
+const navLinks = $$(".nav a");
+if (io){
+  const secIO = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) navLinks.forEach(a => a.classList.toggle("active", a.dataset.scroll === e.target.id));
+  }), {rootMargin:"-40% 0px -55% 0px"});
+  ["about","projects","experience","leadership","skills","contact"].forEach(id => { const el = document.getElementById(id); if (el) secIO.observe(el); });
+}
+
+/* ================= copy email ================= */
+const EMAIL = "adam.najjar@torontomu.ca";
+$$("[data-copy]").forEach(btn => btn.addEventListener("click", () => {
+  const label = btn.textContent;
+  const done = ok => { btn.textContent = ok ? "Copied" : EMAIL; setTimeout(() => btn.textContent = label, ok ? 1800 : 4000); };
+  try { navigator.clipboard.writeText(EMAIL).then(() => done(true), () => done(false)); } catch(err){ done(false); }
+}));
+
+/* ================= resume download ================= */
+/* In the claude.ai viewer the PDF is saved through the downloads capability. A viewer who
+   can't use it (for example someone opening a public link without signing in) gets
+   "View resume" instead, which shows the resume as an image in a scrollable viewer. */
+const resumeLinks = $$("[data-resume]");
+const notes = $$("[data-resume-note]");
+const say = msg => notes.forEach(n => n.textContent = msg);
+const DOC_ICON = '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 1.5h5.5L12.5 4.5V14.5H4z M9.5 1.5V4.5H12.5 M6 8h4.5 M6 10.5h4.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>';
+const toViewer = () => resumeLinks.forEach(a => { a.dataset.view = "1"; a.removeAttribute("target"); a.innerHTML = DOC_ICON + "View resume"; });
+const openDoc = () => { say(""); lb.classList.add("doc"); openLightbox("resume"); lb.scrollTop = 0; };
+if (window.claude && typeof window.claude.use === "function"){
+  let dlP = null;
+  const getDl = () => (dlP = dlP || window.claude.use("downloads").catch(() => null));
+  getDl().then(ns => { if (!ns) toViewer(); });
+  resumeLinks.forEach(a => a.addEventListener("click", async e => {
+    e.preventDefault();
+    if (a.dataset.view){ openDoc(); return; }
+    const dl = await getDl();
+    if (!dl){ toViewer(); openDoc(); return; }
+    try {
+      const res = await fetch("Adam_Najjar_Resume.pdf");
+      if (!res.ok) throw new Error("fetch");
+      const blob = await res.blob();
+      await dl.save({filename:"Adam_Najjar_Resume.pdf", data:blob});
+      say("");
+    } catch(err){
+      const c = err && err.code;
+      if (c === "declined") say("");
+      else if (c === "rate_limited") say("A download prompt is already open.");
+      else openDoc();
+    }
+  }));
+}
+})();
+</script>
+</body></html>
